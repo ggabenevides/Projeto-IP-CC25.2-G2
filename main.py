@@ -7,13 +7,15 @@ import math
 pygame.init() 
 pygame.display.set_caption('Gisele Bundchen VS As Forças Do Mal')
 
-bg_image = pygame.image.load(os.path.join('assets', 'cenario', 'passarela.png'))
+altura_tela = 700
+largura_tela = 900
+dimensoes_tela = (largura_tela, altura_tela)
+
+tela = pygame.display.set_mode(dimensoes_tela)
+original_bg_image = pygame.image.load(os.path.join('assets', 'cenario', 'passarela.png')).convert()
+bg_image = pygame.transform.scale(original_bg_image, dimensoes_tela)
 bg_width = bg_image.get_width()
 
-altura_tela = 690
-largura_tela = 1300
-dimensoes_tela = (largura_tela, altura_tela)
-tela = pygame.display.set_mode(dimensoes_tela)
 tiles = math.ceil(largura_tela / bg_width) + 1
 buff_ativo = False
 debuff_ativo = False
@@ -39,13 +41,13 @@ while run:  # loop principal
         # scroll background
         if buff_ativo:
             debuff_ativo = False
-            scroll -= 20
+            scroll -= 7
             tempo_ativo += 1
             if tempo_ativo >= 100:
                 buff_ativo = False
                 tempo_ativo = 0
         else:
-            scroll -= 10
+            scroll -= 7
 
         if debuff_ativo:
             buff_ativo = False
@@ -55,8 +57,10 @@ while run:  # loop principal
                 debuff_ativo = False
                 tempo_ativo = 0
         else:
-            scroll -= 10
+            scroll -= 7
 
         # reset scroll do cenario
         if abs(scroll) > bg_width:
-            scroll = 0            
+            scroll = 0 
+
+        pygame.display.update()           
