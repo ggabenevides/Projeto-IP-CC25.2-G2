@@ -5,24 +5,25 @@ import os
 import math
 
 pygame.init() 
-pygame.display.set_caption('Gisele Bundchen VS As Forças Do Mal')
+pygame.display.set_caption('Gisele Bundchen VS As Forças Do Mal') # nome do jogo
 
+# inicializando variaveis
 altura_tela = 700
 largura_tela = 900
 dimensoes_tela = (largura_tela, altura_tela)
-
-tela = pygame.display.set_mode(dimensoes_tela)
-original_bg_image = pygame.image.load(os.path.join('assets', 'cenario', 'passarela.png')).convert()
-bg_image = pygame.transform.scale(original_bg_image, dimensoes_tela)
-bg_width = bg_image.get_width()
-
-tiles = math.ceil(largura_tela / bg_width) + 1
 buff_ativo = False
 debuff_ativo = False
 tempo_ativo = 0
 relogio = pygame.time.Clock()
 run = True
 scroll = 0
+
+# configurando cenario
+tela = pygame.display.set_mode(dimensoes_tela)
+original_bg_image = pygame.image.load(os.path.join('assets', 'cenario', 'passarela.png')).convert()
+bg_image = pygame.transform.scale(original_bg_image, dimensoes_tela)
+bg_width = bg_image.get_width()
+tiles = math.ceil(largura_tela / bg_width) + 1 # variavel p o mecanismo de rolagem infinita da tela
 
 while run:  # loop principal
         delta_time = relogio.tick(30) / 1000.0  # tempo decorrido em segundos
