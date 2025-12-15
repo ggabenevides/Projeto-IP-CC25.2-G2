@@ -4,7 +4,7 @@ import os
 ANDANDO = [pygame.image.load(os.path.join("assets/gisele", "sprite_0.png")),
            pygame.image.load(os.path.join("assets/gisele", "sprite_1.png")),
            pygame.image.load(os.path.join("assets/gisele", "sprite_2.png"))]
-PULANDO = []
+PULANDO = pygame.image.load(os.path.join("assets/gisele", "sprite_1.png")) # enquanto ela não estiver tocando no chão, ela fica "parada"
 
 class Gisele:
     def __init__(self):
@@ -15,6 +15,8 @@ class Gisele:
 
         self.pulando = False
         self.andando = True
+
+    def pulo(self):
 
 
 
