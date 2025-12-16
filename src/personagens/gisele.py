@@ -2,10 +2,10 @@ import pygame
 import os
 
 gisele_frames = [
-    pygame.image.load(os.path.join('assets', 'gisele', 'sprite_0.png')).convert_alpha(),
-    pygame.image.load(os.path.join('assets', 'gisele', 'sprite_2.png')).convert_alpha(),
-    pygame.image.load(os.path.join('assets', 'gisele', 'sprite_1.png')).convert_alpha(),
-    pygame.image.load(os.path.join('assets', 'gisele', 'sprite_2.png')).convert_alpha(),
+    pygame.image.load(os.path.join('assets', 'sprites', 'gisele', 'sprite_0.png')).convert_alpha(),
+    pygame.image.load(os.path.join('assets', 'sprites', 'gisele', 'sprite_2.png')).convert_alpha(),
+    pygame.image.load(os.path.join('assets', 'sprites', 'gisele', 'sprite_1.png')).convert_alpha(),
+    pygame.image.load(os.path.join('assets', 'sprites', 'gisele', 'sprite_2.png')).convert_alpha(),
 ]
 
 gisele_frames = [pygame.transform.scale(img, (80, 80)) for img in gisele_frames]
