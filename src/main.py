@@ -4,6 +4,18 @@ from sys import exit
 import math
 import random
 
+# inicializando variáveis
+relogio = pygame.time.Clock()
+run = True
+altura_tela = 700
+largura_tela = 900
+dimensoes_tela = (largura_tela, altura_tela)
+
+pygame.init()
+pygame.display.set_caption('Gisele Bundchen VS As Forças Do Mal')
+tela = pygame.display.set_mode(dimensoes_tela)
+
+# importando funções da mecânica de jogo
 from cenarios.desfile import iniciar_passarela
 from personagens.gisele import (
     atualizar_fisica,
@@ -24,18 +36,6 @@ from coletaveis.camera import (
 )
 from coletaveis.rosa import efeito_rosa
 
-pygame.init()
-pygame.display.set_caption('Gisele Bundchen VS As Forças Do Mal')
-
-# inicializando variáveis
-altura_tela = 700
-largura_tela = 900
-dimensoes_tela = (largura_tela, altura_tela)
-
-tela = pygame.display.set_mode(dimensoes_tela)
-relogio = pygame.time.Clock()
-run = True
-
 # configurando cenário
 bg_image, bg_width, tiles, scroll = iniciar_passarela(
     dimensoes_tela,
@@ -45,7 +45,7 @@ bg_image, bg_width, tiles, scroll = iniciar_passarela(
 # definindo distância
 distancia_pixels = 0
 pixels_por_metro = 20
-meta_metros = 300
+meta_metros = 500
 
 # dicionários com os contadores (coletáveis temporários - amarelo: bananas; ciano: câmera; rosa: flores)
 contadores = {
