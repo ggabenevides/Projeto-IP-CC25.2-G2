@@ -48,6 +48,12 @@ vel_y = 0
 gravidade = 1
 pulando = False
 
+# distância a ser percorrida (finitude do jogo)
+distancia_pixels = 0
+
+pixels_por_metro = 20
+meta_metros = 300
+
 # coletáveis (temporários - amarelo: bananas; ciano: câmera; rosa: flores)
 tamanho_coletavel = 30
 
@@ -165,6 +171,10 @@ while run:  # loop principal
         if abs(scroll) > bg_width:
             scroll = 0 
 
+        distancia_pixels += abs(7) # adicionando a distância percorrida
+        distancia_metros = distancia_pixels // pixels_por_metro # "convertendo em metros"
+
+
         # movimentação dos coletáveis
         for coletavel in coletaveis:
             coletavel["rect"].x -= vel_coletavel
@@ -211,13 +221,17 @@ while run:  # loop principal
         # mostrar coletáveis na tela
         fundo_x = 20
         fundo_y = 20
-        fundo_largura = 190
-        fundo_altura = 40
+        fundo_largura = 250
+        fundo_altura = 70
 
         pygame.draw.rect(tela, (180, 180, 180), (fundo_x, fundo_y, fundo_largura, fundo_altura))
         pygame.draw.rect(tela, (100, 100, 100), (fundo_x, fundo_y, fundo_largura, fundo_altura), 2)
 
         margin_x = fundo_x + 10
+
+        # mostrar distância percorrida na tela
+        texto_distancia = fonte.render(f"{distancia_metros} m", True, (0, 0, 0))
+        tela.blit(texto_distancia, (margin_x, fundo_y + 45))
 
         for cor in cores_coletaveis:
             pygame.draw.rect(tela, cor, (margin_x, fundo_y + 10, 20, 20))
@@ -248,5 +262,9 @@ while run:  # loop principal
                     flash = False  # termina o flash
 
             tela.blit(flash_surface, (0, 0))
+
+        # fim do jogo
+        if distancia_metros >= meta_metros:
+            run = False 
 
         pygame.display.update()           
