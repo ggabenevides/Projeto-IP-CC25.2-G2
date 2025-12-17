@@ -1,2 +1,6 @@
+from coletaveis.base import (
+    sprites_coletaveis
+)
+
 def efeito_rosa(contadores):
-    contadores[(220, 0, 255)] += 1
+    contadores[sprites_coletaveis[2]] += 1
