@@ -1,13 +1,20 @@
 import pygame
 import random
+import os
 
-tamanho_coletavel = 30
-
+tamanho_coletavel = 40
 alturas_coletaveis = [565, 480, 460]
 distancia_minima_x = 250
-cores_coletaveis = [(255, 200, 0), (0, 255, 255), (220, 0, 255)]
 
-def gerar_coletavel(cor, alturas_ocupadas, xs_ocupados, largura_tela):
+sprites_coletaveis = [
+    pygame.image.load(os.path.join('assets', 'sprites', 'coletaveis', 'cascaDeBanana.png')).convert_alpha(),
+    pygame.image.load(os.path.join('assets', 'sprites', 'coletaveis', 'flash.png')).convert_alpha(),
+    pygame.image.load(os.path.join('assets', 'sprites', 'coletaveis', 'rosa.png')).convert_alpha(),
+]
+
+sprites_coletaveis = [pygame.transform.scale(img, (tamanho_coletavel, tamanho_coletavel)) for img in sprites_coletaveis]
+
+def gerar_coletavel(sprite_coletavel, alturas_ocupadas, xs_ocupados, largura_tela):
     alturas_disponiveis = [h for h in alturas_coletaveis if h not in alturas_ocupadas]
     if not alturas_disponiveis:
         altura = random.choice(alturas_coletaveis)
@@ -25,5 +32,5 @@ def gerar_coletavel(cor, alturas_ocupadas, xs_ocupados, largura_tela):
 
     return {
         "rect": pygame.Rect(x, altura, tamanho_coletavel, tamanho_coletavel),
-        "cor": cor
+        "coletavel": sprite_coletavel,
     }
