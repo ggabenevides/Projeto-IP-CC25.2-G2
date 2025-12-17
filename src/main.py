@@ -26,7 +26,7 @@ from personagens.gisele import (
 )
 from coletaveis.base import (
     gerar_coletavel,
-    cores_coletaveis
+    sprites_coletaveis
 )
 from coletaveis.banana import efeito_banana
 from coletaveis.camera import (
@@ -45,13 +45,13 @@ bg_image, bg_width, tiles, scroll = iniciar_passarela(
 # definindo distância
 distancia_pixels = 0
 pixels_por_metro = 20
-meta_metros = 500
+meta_metros = 700
 
-# dicionários com os contadores (coletáveis temporários - amarelo: bananas; ciano: câmera; rosa: flores)
+# dicionários com os contadores
 contadores = {
-    (255, 200, 0): 0,   # amarelo
-    (0, 255, 255): 0,   # ciano
-    (220, 0, 255): 0    # rosa
+    sprites_coletaveis[0]: 0,   # banana
+    sprites_coletaveis[1]: 0,   # câmera
+    sprites_coletaveis[2]: 0    # rosa
 }
 
 fonte = pygame.font.SysFont(None, 28)
@@ -61,10 +61,10 @@ coletaveis = []
 for _ in range(3):
     alturas_ocupadas = [c["rect"].y for c in coletaveis]
     xs_ocupados = [c["rect"].x for c in coletaveis]
-    cor = random.choice(cores_coletaveis)
+    sprite_coletavel = random.choice(sprites_coletaveis)
     coletaveis.append(
         gerar_coletavel(
-            cor,
+            sprite_coletavel,
             alturas_ocupadas,
             xs_ocupados,
             largura_tela
@@ -102,6 +102,11 @@ while run:
     distancia_pixels += 7
     distancia_metros = distancia_pixels // pixels_por_metro
 
+    # acelerando o jogo a cada 100 metros
+    if distancia_metros != 0 and distancia_metros % 100 == 0:
+        vel_coletavel += 2
+        pixels_por_metro += 5.7
+
     # movimentação dos coletáveis
     for coletavel in coletaveis:
         coletavel["rect"].x -= vel_coletavel
@@ -111,7 +116,7 @@ while run:
             xs_ocupados = [c["rect"].x for c in coletaveis if c != coletavel]
             coletavel.update(
                 gerar_coletavel(
-                    random.choice(cores_coletaveis),
+                    random.choice(sprites_coletaveis),
                     alturas_ocupadas,
                     xs_ocupados,
                     largura_tela
@@ -123,21 +128,20 @@ while run:
     # colisões
     for coletavel in coletaveis:
         if gisele_rect.colliderect(coletavel["rect"]):
-            if coletavel["cor"] == (255, 200, 0):
-                efeito_banana(contadores)
-
-            elif coletavel["cor"] == (0, 255, 255):
-                efeito_camera(contadores)
-                iniciar_flash(largura_tela, altura_tela)
-
-            else:
+            if coletavel["coletavel"] == sprites_coletaveis[2]:
                 efeito_rosa(contadores)
+            else:
+                if coletavel["coletavel"] == sprites_coletaveis[0]:
+                    efeito_banana(contadores)
+                elif coletavel["coletavel"] == sprites_coletaveis[1]:
+                    efeito_camera(contadores)
+                    iniciar_flash(largura_tela, altura_tela)
 
             alturas_ocupadas = [c["rect"].y for c in coletaveis if c != coletavel]
             xs_ocupados = [c["rect"].x for c in coletaveis if c != coletavel]
             coletavel.update(
                 gerar_coletavel(
-                    random.choice(cores_coletaveis),
+                    random.choice(sprites_coletaveis),
                     alturas_ocupadas,
                     xs_ocupados,
                     largura_tela
@@ -146,7 +150,7 @@ while run:
 
     # mostrando os contadores na tela
     for coletavel in coletaveis:
-        pygame.draw.rect(tela, coletavel["cor"], coletavel["rect"])
+        tela.blit(coletavel["coletavel"], (coletavel["rect"]))
 
     # mostrando gisele na tela
     desenhar(tela)
@@ -164,9 +168,9 @@ while run:
     )
     pygame.draw.rect(
         tela,
-        (100, 100, 100),
+        (126, 77, 113),
         (fundo_x, fundo_y, fundo_largura, fundo_altura),
-        2
+        4
     )
 
     margin_x = fundo_x + 10
@@ -174,17 +178,19 @@ while run:
     texto_distancia = fonte.render(f"{distancia_metros} m", True, (0, 0, 0))
     tela.blit(texto_distancia, (margin_x, fundo_y + 45))
 
-    for cor in cores_coletaveis:
-        pygame.draw.rect(tela, cor, (margin_x, fundo_y + 10, 20, 20))
-        texto = fonte.render(str(contadores[cor]), True, (0, 0, 0))
-        tela.blit(texto, (margin_x + 25, fundo_y + 10))
+    for sprite in sprites_coletaveis:
+        tela.blit(sprite, (margin_x + 5, fundo_y + 5, 20, 20))
+        texto = fonte.render(str(contadores[sprite]), True, (0, 0, 0))
+        tela.blit(texto, (margin_x + 50, fundo_y + 20))
         margin_x += 65
 
     # flash do paparazzi
     desenhar_flash(tela, dimensoes_tela)
 
     # fim do jogo
-    if distancia_metros >= meta_metros:
+    if contadores[sprites_coletaveis[0]] >= 4 or contadores[sprites_coletaveis[1]] >= 4:
+        run = False
+    elif distancia_metros >= meta_metros:
         run = False
 
     pygame.display.update()
