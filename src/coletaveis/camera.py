@@ -1,10 +1,8 @@
 import pygame
 import math
 from coletaveis.base import Base
-from coletaveis.base import (
-    sprites_coletaveis
-)
 
+base_engine = Base()
 class Camera(Base):
 
     def __init__(self):
@@ -16,36 +14,34 @@ class Camera(Base):
         self.flash_duracao_tela_total = 30
 
     def efeito_camera(contadores):
-        contadores[sprites_coletaveis[1]] += 1
+        contadores['camera'] += 1
 
-    def iniciar_flash(largura_tela, altura_tela):
-        global flash, flash_raio, flash_raio_max, flash_tempo_tela_total
-        flash = True
-        flash_raio = 0
-        flash_raio_max = int(math.hypot(largura_tela, altura_tela))
-        flash_tempo_tela_total = 0
+    def iniciar_flash(self, largura_tela, altura_tela):
+        self.flash = True
+        self.flash_raio = 0
+        self.flash_raio_max = int(math.hypot(largura_tela, altura_tela))
+        self.flash_tempo_tela_total = 0
 
     def desenhar_flash(self, tela, dimensoes_tela): # VERIFICAR APLICAÇÃO DE SELF
-        global flash, flash_raio, flash_tempo_tela_total
 
-        if not flash:
+        if not self.flash:
             return
 
         flash_surface = pygame.Surface(dimensoes_tela, pygame.SRCALPHA)
 
-        if flash_raio < flash_raio_max:
-            flash_raio += self.flash_velocidade
+        if self.flash_raio < self.flash_raio_max:
+            self.flash_raio += self.flash_velocidade
             pygame.draw.circle(
                 flash_surface,
                 (255, 255, 255, 255),
                 (dimensoes_tela[0] // 2, dimensoes_tela[1] // 2),
-                flash_raio
+                self.flash_raio
             )
         else:
             flash_surface.fill((255, 255, 255))
-            flash_tempo_tela_total += 1
+            self.flash_tempo_tela_total += 1
 
-            if flash_tempo_tela_total >= self.flash_duracao_tela_total:
-                flash = False
+            if self.flash_tempo_tela_total >= self.flash_duracao_tela_total:
+                self.flash = False
 
         tela.blit(flash_surface, (0, 0))

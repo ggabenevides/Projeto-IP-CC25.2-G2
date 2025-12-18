@@ -2,9 +2,11 @@ import pygame
 import os
 import math
 
+pygame.init()
+
 original_bg_image = pygame.image.load(
     os.path.join('assets', 'cenario', 'passarela.png')
-).convert()
+)
 
 class Desfile:
     
