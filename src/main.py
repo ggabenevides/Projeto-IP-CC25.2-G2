@@ -16,215 +16,19 @@ pygame.init()
 pygame.display.set_caption('Gisele Bundchen VS As Forças Do Mal')
 tela = pygame.display.set_mode(dimensoes_tela)
 
-# cenário
-original_bg_image = pygame.image.load(
-    os.path.join('assets', 'cenario', 'passarela.png')
-).convert()
-
-# gisele
-gisele_frames = [
-    pygame.image.load(os.path.join('assets', 'sprites', 'gisele', 'sprite_0.png')).convert_alpha(),
-    pygame.image.load(os.path.join('assets', 'sprites', 'gisele', 'sprite_2.png')).convert_alpha(),
-    pygame.image.load(os.path.join('assets', 'sprites', 'gisele', 'sprite_1.png')).convert_alpha(),
-    pygame.image.load(os.path.join('assets', 'sprites', 'gisele', 'sprite_2.png')).convert_alpha(),
-]
-
-# coletáveis
-sprites_coletaveis = [
-    pygame.image.load(os.path.join('assets', 'sprites', 'coletaveis', 'cascaDeBanana.png')).convert_alpha(),
-    pygame.image.load(os.path.join('assets', 'sprites', 'coletaveis', 'flash.png')).convert_alpha(),
-    pygame.image.load(os.path.join('assets', 'sprites', 'coletaveis', 'rosa.png')).convert_alpha(),
-]
-
-#-----------#
-#  CLASSES  #  
-#-----------#
-
-# CLASSE: Desfile
-class Desfile:
-    
-    def iniciar_passarela(dimensoes_tela, largura_tela):
-        bg_image = pygame.transform.scale(original_bg_image, dimensoes_tela)
-        bg_width = bg_image.get_width()
-        tiles = math.ceil(largura_tela / bg_width) + 1
-        scroll = 0
-
-        return bg_image, bg_width, tiles, scroll
-
-# CLASSE: Gisele
-class Gisele:
-
-    gisele_frames = [pygame.transform.scale(img, (80, 80)) for img in gisele_frames]
-
-    def __init__(self):
-        self.frame_idx = 0
-        self.frame_timer = 0.0
-        self.frame_interval = 0.06
-
-        self.player_x = 120
-        self.chao = 525
-        self.player_y = self.chao
-
-        self.vel_y = 0
-        self.gravidade = 1
-        self.pulando = False
-
-    def atualizar_fisica(self): # VERIFICAR APLICAÇÃO DE SELF E SELF
-        global player_y, vel_y, pulando
-
-        vel_y += self.gravidade
-        player_y += vel_y
-
-        if player_y >= self.chao:
-            player_y = self.chao
-            vel_y = 0
-            pulando = False
-
-    def atualizar_animacao(self, delta_time): # VERIFICAR APLICAÇÃO DE SELF
-        global frame_timer, frame_idx
-
-        if not pulando:
-            frame_timer += delta_time
-            if frame_timer >= self.frame_interval:
-                frame_timer = 0
-                frame_idx = (frame_idx + 1) % len(gisele_frames)
-        else:
-            frame_idx = 1
-
-    def pular():
-        global vel_y, pulando
-        if not pulando:
-            vel_y = -14
-            pulando = True
-
-    def desenhar(self, tela): # VERIFICAR APLICAÇÃO DE SELF
-        tela.blit(gisele_frames[frame_idx], (self.player_x, player_y))
-
-    def get_rect(self): # VERIFICAR APLICAÇÃO DE SELF
-        return pygame.Rect(self.player_x, player_y, 80, 80)
-
-# CLASSE: Base
-class Base:
-
-    def __init__(self):
-
-        self.tamanho_coletavel = 40
-        self.alturas_coletaveis = [565, 480, 460]
-        self.distancia_minima_x = 250
-        sprites_coletaveis = [pygame.transform.scale(img, (self.tamanho_coletavel, self.tamanho_coletavel)) for img in sprites_coletaveis]
-
-    def gerar_coletavel(self, sprite_coletavel, alturas_ocupadas, xs_ocupados, largura_tela):  # VERIFICAR APLICAÇÃO DE SELF
-        alturas_disponiveis = [h for h in self.alturas_coletaveis if h not in alturas_ocupadas]
-        if not alturas_disponiveis:
-            altura = random.choice(self.alturas_coletaveis)
-        else:
-            altura = random.choice(alturas_disponiveis)
-
-        tentativas = 0
-        while True:
-            x = random.randint(largura_tela + 200, largura_tela + 900)
-            if all(abs(x - outro_x) >= self.distancia_minima_x for outro_x in xs_ocupados):
-                break
-            tentativas += 1
-            if tentativas > 10:
-                break
-
-        return {
-            "rect": pygame.Rect(x, altura, self.tamanho_coletavel, self.tamanho_coletavel),
-            "coletavel": sprite_coletavel,
-        }
-
-# CLASSE: Banana
-class Banana(Base):
-    
-    def efeito_banana(contadores):
-        contadores[sprites_coletaveis[2]] = 0
-        contadores[sprites_coletaveis[0]] += 1
-
-# CLASSE: Câmera
-class Camera(Base):
-
-    def __init__(self):
-        self.flash = False
-        self.flash_raio = 0
-        self.flash_velocidade = 25
-        self.flash_raio_max = 0
-        self.flash_tempo_tela_total = 0
-        self.flash_duracao_tela_total = 30
-
-    def efeito_camera(contadores):
-        contadores[sprites_coletaveis[1]] += 1
-
-    def iniciar_flash(largura_tela, altura_tela):
-        global flash, flash_raio, flash_raio_max, flash_tempo_tela_total
-        flash = True
-        flash_raio = 0
-        flash_raio_max = int(math.hypot(largura_tela, altura_tela))
-        flash_tempo_tela_total = 0
-
-    def desenhar_flash(self, tela, dimensoes_tela): # VERIFICAR APLICAÇÃO DE SELF
-        global flash, flash_raio, flash_tempo_tela_total
-
-        if not flash:
-            return
-
-        flash_surface = pygame.Surface(dimensoes_tela, pygame.SRCALPHA)
-
-        if flash_raio < flash_raio_max:
-            flash_raio += self.flash_velocidade
-            pygame.draw.circle(
-                flash_surface,
-                (255, 255, 255, 255),
-                (dimensoes_tela[0] // 2, dimensoes_tela[1] // 2),
-                flash_raio
-            )
-        else:
-            flash_surface.fill((255, 255, 255))
-            flash_tempo_tela_total += 1
-
-            if flash_tempo_tela_total >= self.flash_duracao_tela_total:
-                flash = False
-
-        tela.blit(flash_surface, (0, 0))
-
-# CLASSE: Rosa
-class Rosa(Base):
-    from coletaveis.base import (
-    sprites_coletaveis
-    )
-
-    def efeito_rosa(contadores):
-        contadores[sprites_coletaveis[2]] += 1
-
-#--------#
-#  main  #
-#--------#
 
 def main():
 
     # importando funções da mecânica de jogo
-    from cenarios.desfile import iniciar_passarela
-    from personagens.gisele import (
-        atualizar_fisica,
-        atualizar_animacao,
-        pular,
-        desenhar,
-        get_rect
-    )
-    from coletaveis.base import (
-        gerar_coletavel,
-        sprites_coletaveis
-    )
-    from coletaveis.banana import efeito_banana
-    from coletaveis.camera import (
-        efeito_camera,
-        iniciar_flash,
-        desenhar_flash
-    )
-    from coletaveis.rosa import efeito_rosa
+    from cenarios.desfile import Desfile
+    from personagens.gisele import Gisele
+    from coletaveis.base import Base
+    from coletaveis.banana import Banana
+    from coletaveis.camera import Camera
+    from coletaveis.rosa import Rosa
 
     # configurando cenário
-    bg_image, bg_width, tiles, scroll = iniciar_passarela(
+    bg_image, bg_width, tiles, scroll = Desfile.iniciar_passarela(
         dimensoes_tela,
         largura_tela
     )
@@ -236,9 +40,9 @@ def main():
 
     # dicionários com os contadores
     contadores = {
-        sprites_coletaveis[0]: 0,   # banana
-        sprites_coletaveis[1]: 0,   # câmera
-        sprites_coletaveis[2]: 0    # rosa
+        Base.sprites_coletaveis[0]: 0,   # banana
+        Base.sprites_coletaveis[1]: 0,   # câmera
+        Base.sprites_coletaveis[2]: 0    # rosa
     }
 
     fonte = pygame.font.SysFont(None, 28)
@@ -248,9 +52,9 @@ def main():
     for _ in range(3):
         alturas_ocupadas = [c["rect"].y for c in coletaveis]
         xs_ocupados = [c["rect"].x for c in coletaveis]
-        sprite_coletavel = random.choice(sprites_coletaveis)
+        sprite_coletavel = random.choice(Base.sprites_coletaveis)
         coletaveis.append(
-            gerar_coletavel(
+            Base.gerar_coletavel(
                 sprite_coletavel,
                 alturas_ocupadas,
                 xs_ocupados,
@@ -271,11 +75,11 @@ def main():
 
             if event.type == KEYDOWN: # identificar o w ou a seta do pulo
                 if event.key == K_w or event.key == K_UP:
-                    pular()
+                    Gisele.pular()
 
         # chamando as funções de gisele
-        atualizar_fisica()
-        atualizar_animacao(delta_time)
+        Gisele.atualizar_fisica()
+        Gisele.atualizar_animacao(delta_time)
 
         # desenhando o cenário
         for i in range(tiles):
@@ -302,33 +106,33 @@ def main():
                 alturas_ocupadas = [c["rect"].y for c in coletaveis if c != coletavel]
                 xs_ocupados = [c["rect"].x for c in coletaveis if c != coletavel]
                 coletavel.update(
-                    gerar_coletavel(
-                        random.choice(sprites_coletaveis),
+                    Base.gerar_coletavel(
+                        random.choice(Base.sprites_coletaveis),
                         alturas_ocupadas,
                         xs_ocupados,
                         largura_tela
                     )
                 )
 
-        gisele_rect = get_rect()
+        gisele_rect = Gisele.get_rect()
 
         # colisões
         for coletavel in coletaveis:
             if gisele_rect.colliderect(coletavel["rect"]):
-                if coletavel["coletavel"] == sprites_coletaveis[2]:
-                    efeito_rosa(contadores)
+                if coletavel["coletavel"] == Base.sprites_coletaveis[2]:
+                    Rosa.efeito_rosa(contadores)
                 else:
-                    if coletavel["coletavel"] == sprites_coletaveis[0]:
-                        efeito_banana(contadores)
-                    elif coletavel["coletavel"] == sprites_coletaveis[1]:
-                        efeito_camera(contadores)
-                        iniciar_flash(largura_tela, altura_tela)
+                    if coletavel["coletavel"] == Base.sprites_coletaveis[0]:
+                        Banana.efeito_banana(contadores)
+                    elif coletavel["coletavel"] == Base.sprites_coletaveis[1]:
+                        Camera.efeito_camera(contadores)
+                        Camera.iniciar_flash(largura_tela, altura_tela)
 
                 alturas_ocupadas = [c["rect"].y for c in coletaveis if c != coletavel]
                 xs_ocupados = [c["rect"].x for c in coletaveis if c != coletavel]
                 coletavel.update(
-                    gerar_coletavel(
-                        random.choice(sprites_coletaveis),
+                    Base.gerar_coletavel(
+                        random.choice(Base.sprites_coletaveis),
                         alturas_ocupadas,
                         xs_ocupados,
                         largura_tela
@@ -340,7 +144,7 @@ def main():
             tela.blit(coletavel["coletavel"], (coletavel["rect"]))
 
         # mostrando gisele na tela
-        desenhar(tela)
+        Gisele.desenhar(tela)
 
         # fundo cinza para exibir coletáveis e metragem
         fundo_x = 20
@@ -365,17 +169,17 @@ def main():
         texto_distancia = fonte.render(f"{distancia_metros} m", True, (0, 0, 0))
         tela.blit(texto_distancia, (margin_x, fundo_y + 45))
 
-        for sprite in sprites_coletaveis:
+        for sprite in Base.sprites_coletaveis:
             tela.blit(sprite, (margin_x + 5, fundo_y + 5, 20, 20))
             texto = fonte.render(str(contadores[sprite]), True, (0, 0, 0))
             tela.blit(texto, (margin_x + 50, fundo_y + 20))
             margin_x += 65
 
         # flash do paparazzi
-        desenhar_flash(tela, dimensoes_tela)
+        Camera.desenhar_flash(tela, dimensoes_tela)
 
         # fim do jogo
-        if contadores[sprites_coletaveis[0]] >= 4 or contadores[sprites_coletaveis[1]] >= 4:
+        if contadores[Base.sprites_coletaveis[0]] >= 4 or contadores[Base.sprites_coletaveis[1]] >= 4:
             run = False
         elif distancia_metros >= meta_metros:
             run = False

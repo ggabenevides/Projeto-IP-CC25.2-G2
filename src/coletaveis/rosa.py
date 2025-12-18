@@ -1,6 +1,6 @@
-from coletaveis.base import (
-    sprites_coletaveis
-)
+from coletaveis.base import Base
 
-def efeito_rosa(contadores):
-    contadores[sprites_coletaveis[2]] += 1
+class Rosa(Base):
+
+    def efeito_rosa(contadores):
+        contadores[Base.sprites_coletaveis[2]] += 1
