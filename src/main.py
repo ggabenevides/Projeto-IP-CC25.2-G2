@@ -4,7 +4,7 @@ from sys import exit
 import random
 import os
 
-# inicializando pygame + criando tela + inicializando variáveis globais
+# inicializando pygame + criando tela + inicializando variáveis globais + acelerando gradualmente jogo
 altura_tela = 700
 largura_tela = 900
 dimensoes_tela = (largura_tela, altura_tela)
@@ -12,6 +12,8 @@ pygame.init()
 pygame.display.set_caption('Gisele Bundchen VS As Forças Do Mal')
 tela = pygame.display.set_mode(dimensoes_tela)
 relogio = pygame.time.Clock()
+ACELERAR = pygame.USEREVENT + 1
+pygame.time.set_timer(ACELERAR, 10000)
 
 # importando classes
 from cenarios.desfile import Desfile
@@ -47,8 +49,6 @@ def main():
         "rosa": 0    
     }
 
-    
-
     coletaveis = []
 
     for _ in range(3):
@@ -79,6 +79,9 @@ def main():
                 if event.key == K_w or event.key == K_UP or event.key == K_SPACE:
                     gisele.pular()
 
+            if event.type == ACELERAR and vel_coletavel < 20:
+                vel_coletavel += 1
+
         # chamando as funções de gisele
         gisele.atualizar_fisica()
         gisele.atualizar_animacao(delta_time)
@@ -87,18 +90,13 @@ def main():
         for i in range(tiles):
             tela.blit(bg_image, (i * bg_width + scroll, 0))
 
-        scroll -= 7
+        scroll -= vel_coletavel
         if abs(scroll) > bg_width:
             scroll = 0
 
         # incrementando a distância percorrida
         distancia_pixels += 7
         distancia_metros = distancia_pixels // pixels_por_metro
-
-        # acelerando o jogo a cada 100 metros
-        if distancia_metros != 0 and distancia_metros % 100 == 0:
-            vel_coletavel += 2
-            pixels_por_metro += 5.7
 
         # movimentação dos coletáveis
         for coletavel in coletaveis:
@@ -153,7 +151,7 @@ def main():
         fundo_y = 20
         fundo_largura = 250
         fundo_altura = 90
-        fonte = pygame.font.Font((os.path.join('assets', 'fonte', 'fonte.ttf')), 20)
+        fonte = pygame.font.SysFont(None, 20)
 
         pygame.draw.rect(
             tela,
