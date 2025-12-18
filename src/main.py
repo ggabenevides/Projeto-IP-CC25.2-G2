@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from sys import exit
 import random
+import os
 
 # inicializando pygame + criando tela + inicializando variáveis globais
 altura_tela = 700
@@ -41,12 +42,12 @@ def main():
 
     # dicionários com os contadores
     contadores = {
-        "banana": 0,   # banana
-        "camera": 0,   # câmera
-        "rosa": 0    # rosa
+        "banana": 0,   
+        "camera": 0,   
+        "rosa": 0    
     }
 
-    fonte = pygame.font.SysFont(None, 28)
+    
 
     coletaveis = []
 
@@ -151,7 +152,8 @@ def main():
         fundo_x = 20
         fundo_y = 20
         fundo_largura = 250
-        fundo_altura = 70
+        fundo_altura = 90
+        fonte = pygame.font.Font((os.path.join('assets', 'fonte', 'fonte.ttf')), 20)
 
         pygame.draw.rect(
             tela,
@@ -165,7 +167,7 @@ def main():
             4
         )
 
-        margin_x = fundo_x + 10
+        margin_x = fundo_x + 20
 
         texto_distancia = fonte.render(f"{distancia_metros} m", True, (0, 0, 0))
         tela.blit(texto_distancia, (margin_x, fundo_y + 45))
@@ -175,7 +177,7 @@ def main():
             tela.blit(sprite, (margin_x, 25))
             nome_item = icones[i]
             texto = fonte.render(str(contadores[nome_item]), True, (0, 0, 0))
-            tela.blit(texto, (margin_x + 30, 30))
+            tela.blit(texto, (margin_x + 45, 30))
             margin_x += 65
 
         # flash do paparazzi
