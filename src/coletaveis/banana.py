@@ -1,3 +1,7 @@
+from coletaveis.base import (
+    sprites_coletaveis
+)
+
 def efeito_banana(contadores):
-    contadores[(220, 0, 255)] = 0
-    contadores[(255, 200, 0)] += 1
+    contadores[sprites_coletaveis[2]] = 0
+    contadores[sprites_coletaveis[0]] += 1

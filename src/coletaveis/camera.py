@@ -1,6 +1,10 @@
 import pygame
 import math
 
+from coletaveis.base import (
+    sprites_coletaveis
+)
+
 flash = False
 flash_raio = 0
 flash_velocidade = 25
@@ -10,7 +14,7 @@ flash_duracao_tela_total = 30
 
 
 def efeito_camera(contadores):
-    contadores[(0, 255, 255)] += 1
+    contadores[sprites_coletaveis[1]] += 1
 
 
 def iniciar_flash(largura_tela, altura_tela):
