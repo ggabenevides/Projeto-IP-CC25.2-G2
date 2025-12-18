@@ -151,7 +151,7 @@ def main():
         fundo_y = 20
         fundo_largura = 250
         fundo_altura = 90
-        fonte = pygame.font.SysFont(None, 20)
+        fonte = pygame.Font((os.path.join('assets', 'fonte', 'fonte.ttf')), 20)
 
         pygame.draw.rect(
             tela,
