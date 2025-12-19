@@ -52,9 +52,9 @@ PROJETO/
 |-- assets/                 # Recursos estáticos do projeto
 |   |-- cenario/            # Imagens usadas para o cenário
 |   |-- fonte/              # Fonte utilizada para os textos
-|   |-- sprites/            # _Sprites_ utilizadas
-|   |   |-- coletaveis/     # _Sprites_: coletáveis
-|   |   |-- gisele/         # _Sprites_: personagem
+|   |-- sprites/            # Sprites utilizadas
+|   |   |-- coletaveis/     # Sprites: coletáveis
+|   |   |-- gisele/         # Sprites: personagem
 |   |-- sons/               # Música e efeitos sonoros utilizados no jogo
 |   |-- telas de transição  # PNGs das telas inicial e final, além de seus botões
 |-- src/                    # Código fonte do projeto
