@@ -14,7 +14,9 @@ Conduzir Gisele pelo desfile, driblando as cascas de banana e os *flashes* dos *
 
 ### Mecânica e fases
 O jogo consiste em uma única fase, com **velocidade progressiva** a cada ciclo de 10 segundos: desfilar ao longo de 700 metros de passarela, esquivando-se das **cascas de banana** e das **câmeras**, e acumulando as **rosas** dispersas pelo percurso.\
+
 Os três tipos de coletáveis têm os seguintes efeitos:\
+
 **· Casca de banana:** Zerar a contagem de rosas. Se coletadas mais de 3, encerra o jogo — **game over**.\
 **· Câmera:** Ofuscar a tela durante 0,3 segundo. Se coletadas mais de 3, encerra o jogo — **game over**.\
 **· Rosa:** Somar pontos ao relatório final do jogo.
