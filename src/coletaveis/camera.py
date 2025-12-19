@@ -23,7 +23,6 @@ class Camera(Base):
         self.flash_tempo_tela_total = 0
 
     def desenhar_flash(self, tela, dimensoes_tela): # VERIFICAR APLICAÇÃO DE SELF
-
         if not self.flash:
             return
 
