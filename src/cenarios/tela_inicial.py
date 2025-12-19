@@ -44,10 +44,6 @@ class TelaInicial:
 
     def desenhar(self):
         self.screen.blit(self.bg, (0, 0))
-        
-        # teste (apagar)
-        pg.draw.rect(self.screen, (255, 0, 0), self.btn_iniciar, 2)
-        pg.draw.rect(self.screen, (0, 255, 0), self.btn_instrucoes, 2)
 
         if self.mostrando_instrucoes:
             self.desenhar_overlay_instrucoes()
