@@ -4,10 +4,12 @@
 
 ### Sinopse
 Nossa *übermodel* está de volta!\
+
 Após anos afastada da passarela, **Gisele Bündchen** tem uma nova missão — *o desfile de encerramento da turma de IP 2025.2*.
 Mas há um detalhe: modelos invejosas realizaram um complô para sabotar o evento e dispersaram **cascas de banana** pelo caminho.\
 Ajude Gisele a driblar os obstáculos escorregadios e os ***paparazzi***, que enlouquecidamente a ofuscam com seus *flashes*, enquanto tenta coletar as **rosas** lançadas na passarela.\
 **Atenção:** basta uma única banana para abalar sua reputação e zerar as rosas coletadas.\
+
 Será que nossa musa consegue manter-se imune a quedas no *catwalk* e honrar o estrelato?
 
 ### Objetivo
