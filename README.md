@@ -41,7 +41,10 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 
 | Integrante(s)               | Tarefa                |
 ------------------------------|-----------------------|
-| Beatriz Araújo Ciríaco do Rêgo Barros | Tela de início e tela final |
+| Beatriz Araújo Ciríaco do Rêgo Barros | Arte e implementação das teals de:\
+· início;\
+· _game over_;\
+· vitória. |
 | Gabriela Tavares Benevides | Personagens, sons, cenários e coletáveis |
 | Marcela Parahym Xavier Lins, Sofia Avallone Sakovitz | Código principal |
 
