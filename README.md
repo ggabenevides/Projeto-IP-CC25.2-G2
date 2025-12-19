@@ -43,7 +43,7 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 ------------------------------|-----------------------|
 | Beatriz Araújo Ciríaco do Rêgo Barros | · Arte e implementação das telas de:<br>&emsp;- início;<br>&emsp;- _game over_;<br>&emsp;- vitória. |
 | Gabriela Tavares Benevides | · Cenários e a implementação desses códigos;<br>· *Sprites* (personagem principal e coletáveis);<br>· Sons;<br>· Organização do código (repositório + modularização). |
-| Marcela Parahym Xavier Lins | · Desenvolvimento do código principal;<br>· Refinamento de detalhes gráficos;<br>· Relatório final (READ.me). |
+| Marcela Parahym Xavier Lins | · Desenvolvimento do código principal;<br>· Refinamento de detalhes gráficos;<br>· Relatório final (README.md). |
 | Sofia Avallone Sakovitz | · Desenvolvimento do código principal;<br>· Slides da apresentação. |
 
 ## Arquitetura do projeto
