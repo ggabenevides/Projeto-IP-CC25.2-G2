@@ -31,7 +31,7 @@ Os três tipos de coletáveis têm os seguintes efeitos:
 A execução do projeto foi repartida entre o grupo tendo em vista não apenas sua eficiência, mas também as preferências de cada integrante e a colaboração mútua.
 Foram realizadas reuniões presenciais e assíncronas para planejar o processo, firmar metas e avaliar o progresso.
 
-## Divisão de tarefas
+# Divisão de tarefas
 
 | Integrante(s)               | Tarefa                |
 ------------------------------|-----------------------|
