@@ -76,15 +76,15 @@ PROJETO/
 
 ## Galeria do projeto
 ### Tela inicial
-<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/82efbbf6-5494-430b-95ff-46d510fef414" /><br>
+<img width="1128" height="915" alt="image" src="https://github.com/user-attachments/assets/82efbbf6-5494-430b-95ff-46d510fef414" /><br>
 ### Cenário principal
-<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/60c1d5bf-98a7-49ee-8383-2b49988edd8b" /><br>
+<img width="1128" height="915" alt="image" src="https://github.com/user-attachments/assets/60c1d5bf-98a7-49ee-8383-2b49988edd8b" /><br>
 ### Cenário de chegada
-<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/0baf2f86-ea2c-41e0-91c7-0f6211fe507d" /><br>
+<img width="1128" height="915" alt="image" src="https://github.com/user-attachments/assets/0baf2f86-ea2c-41e0-91c7-0f6211fe507d" /><br>
 ### Tela de vitória
-<img width="800" height="600" alt="image" src="https://github.com/ggabenevides/Projeto-IP-CC25.2-G2/blob/41476e97e0fc659f0e50f0a3d590fd6b981c5da4/assets/telas%20de%20transi%C3%A7%C3%A3o/tela_vitoria.png" /><br>
+<img width="1128" height="915" alt="image" src="https://github.com/ggabenevides/Projeto-IP-CC25.2-G2/blob/41476e97e0fc659f0e50f0a3d590fd6b981c5da4/assets/telas%20de%20transi%C3%A7%C3%A3o/tela_vitoria.png" /><br>
 ### Tela de derrota
-<img width="800" height="600" alt="image" src="https://github.com/ggabenevides/Projeto-IP-CC25.2-G2/blob/eda11ebeef343aef042f358ebe430e04632d4105/assets/telas%20de%20transi%C3%A7%C3%A3o/tela_derrota.png" />
+<img width="1128" height="915" alt="image" src="https://github.com/ggabenevides/Projeto-IP-CC25.2-G2/blob/eda11ebeef343aef042f358ebe430e04632d4105/assets/telas%20de%20transi%C3%A7%C3%A3o/tela_derrota.png" />
 
 
 ## Ferramentas e bibliotecas utilizadas
