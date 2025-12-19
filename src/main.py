@@ -16,6 +16,8 @@ ACELERAR = pygame.USEREVENT + 1
 pygame.time.set_timer(ACELERAR, 10000)
 
 # importando classes
+from cenarios.tela_inicial import TelaInicial
+from cenarios.tela_final import TelaFinal
 from cenarios.desfile import Desfile
 from personagens.gisele import Gisele
 from coletaveis.base import Base
@@ -28,6 +30,7 @@ base_engine = Base()
 gisele = Gisele()
 banana = Banana()
 camera = Camera()
+tela_inicial = TelaInicial(tela)
 
 # carregando imagens
 FONTE_HUD = pygame.font.Font(os.path.join('assets', 'fonte', 'fonte.ttf'), 20)
@@ -61,8 +64,12 @@ def main():
     perdeu = False
     som_vitoria_played = False
     som_derrota_played = False
+    gisele.player_y = 500 # ou a posição inicial dela
+    gisele.player_x = 100
+    gisele.esta_pulando = False
 
     # configurando cenário
+    tela_inicial.rodar()
     bg_image, bg_width, tiles, scroll = Desfile.iniciar_passarela(dimensoes_tela, largura_tela)
 
     # definindo distância
@@ -220,23 +227,29 @@ def main():
             # tela de game over
         elif distancia_metros >= meta_metros-50:
             finalizando = True
+        pygame.display.update()
 
         if perdeu:
             pygame.mixer.music.stop()
             if not som_derrota_played:
                 som_derrota.play()
                 som_derrota_played = True
-            # aqui transição p tela de derrota
-            
+            # Chame o método da tela final que exibe derrota
+            tela_final = TelaFinal(tela, contadores, distancia_metros, meta_metros)
+            return tela_final.run() # retornar True para reiniciar ou False para sair
+                
         if finalizando:
             pygame.mixer.music.stop()
             if not som_vitoria_played:
                 som_vitoria.play()
                 som_vitoria_played = True
-            # aqui transição p tela de vitoria
-
-        pygame.display.update()
+            tela_final = TelaFinal(tela, contadores, distancia_metros, meta_metros)
+            return tela_final.run()
 
 # chamando função principal
 if __name__ == "__main__":
-    main()
+    while True: # Loop de reinicialização do jogo
+        jogar_novamente = main()
+        if not jogar_novamente:
+            break
+    pygame.quit()
