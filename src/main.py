@@ -4,7 +4,7 @@ from sys import exit
 import random
 import os
 
-# inicializando pygame + criando tela + inicializando variáveis globais + aceleração gradual do cenário
+# inicializando pygame + criando tela + inicializando variáveis globais + acelerando gradualmente jogo
 altura_tela = 700
 largura_tela = 900
 dimensoes_tela = (largura_tela, altura_tela)
@@ -118,6 +118,7 @@ def main():
             if gisele.player_x >= largura_tela:
                  run = False # fim do jogo / tela de vitória
 
+        scroll -= vel_coletavel
         if abs(scroll) > bg_width:
             scroll = 0
 
@@ -176,9 +177,22 @@ def main():
 
         # HUD 
         fundo_x = 20
-        fundo_y = 8
+        fundo_y = 20
+        fundo_largura = 250
+        fundo_altura = 90
+        fonte = pygame.Font((os.path.join('assets', 'fonte', 'fonte.ttf')), 20)
 
-        tela.blit(HUD_BG, (fundo_x, fundo_y))
+        pygame.draw.rect(
+            tela,
+            (180, 180, 180),
+            (fundo_x, fundo_y, fundo_largura, fundo_altura)
+        )
+        pygame.draw.rect(
+            tela,
+            (126, 77, 113),
+            (fundo_x, fundo_y, fundo_largura, fundo_altura),
+            4
+        )
 
         margin_x = fundo_x + 20
 
