@@ -1,5 +1,3 @@
-# Arquivos de dados gerados pelo jogo
-
 # Arquivos de cache e compilados do Python
 __pycache__/
 *.pyc
