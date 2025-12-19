@@ -56,17 +56,17 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 | GitHub     | Plataforma basilar para a estruturação do projeto de forma coesa e colaborativa. Viabilizou o trabalho em equipe, o gerenciamento de tarefas e a hospedagem do código e dos arquivos utilizados. |        
 
 ## Desafios e lições aprendidas
-# Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
+### Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
 Errou-se em subestimar, a princípio, a dimensão das tarefas necessárias e a possibilidade de surgirem percalços ao longo da jornada.
 O redirecionamento do projeto primário, auxiliado pelos *checkpoints*, mostrou-se uma necessidade, mas, ao fim, também um aprendizado.  
 
-# Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
+### Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
 O maior desafio foi, certamente, o gerenciar o tempo e conciliar demandas internas — que, muitas vezes, exigiam a aquisição de novas habilidades — e externas.
 Para isso, alinhar as expectativas inicias ao que era passível de execução no tempo e nas condições disponíveis foi fundamental.
 Adaptaram-se, assim, as ideias originais para que resultassem em um projeto factível, focado em contemplar com sucesso os requisitos listados,
 mas ainda instigante e conectado com os interesses e a criatividade do grupo.
 
-# Quais as lições aprendidas durante o projeto?
+### Quais as lições aprendidas durante o projeto?
 Para além das lições relativas à programação, o projeto foi enriquecedor no aprendizado do trabalho em grupo: a divisão de tarefas, a comunicação entre a equipe,
 o compromisso com as metas estabelecidas e o entendimento de que colaborar requer, sobretudo, disciplina, parcimônia e compreensão para que se alcance o resultado almejado.
 
