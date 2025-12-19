@@ -29,8 +29,13 @@ class TelaInicial:
     def desenhar(self):
         self.screen.blit(self.bg, (0, 0))
         
+        # teste (apagar)
+        pg.draw.rect(self.screen, (255, 0, 0), self.btn_iniciar, 2)
+        pg.draw.rect(self.screen, (0, 255, 0), self.btn_instrucoes, 2)
+
         if self.mostrando_instrucoes:
             self.desenhar_overlay_instrucoes()
+
 
     def desenhar_overlay_instrucoes(self):
         # Fundo escurecido
@@ -75,8 +80,9 @@ class TelaInicial:
                             pg.quit(); sys.exit()
                     
                     # SE APERTAR ENTER OU ESPAÇO, SAI DO LOOP E RETORNA AO MAIN
-                    if not self.mostrando_instrucoes and event.key in (pg.MOUSEBUTTONDOWN, pg.K_SPACE):
-                        return True 
+                    if not self.mostrando_instrucoes and event.key in (pg.K_RETURN, pg.K_SPACE):
+                        return True
+
 
                 if event.type == pg.MOUSEBUTTONDOWN:
                     if not self.mostrando_instrucoes:

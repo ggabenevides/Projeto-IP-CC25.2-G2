@@ -75,7 +75,7 @@ def main():
     # definindo distância
     distancia_pixels = 0
     pixels_por_metro = 20
-    meta_metros = 500
+    meta_metros = 700
     vel_coletavel = 7
 
     # dicionários com os contadores

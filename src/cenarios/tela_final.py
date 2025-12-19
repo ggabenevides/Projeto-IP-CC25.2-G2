@@ -13,11 +13,11 @@ class TelaFinal:
         self.meta = meta
 
         # 1. Lógica de vitória ou derrota
-        self.perdeu = contadores["banana"] >= 3 or contadores["camera"] >= 3 or contadores["rosa"] <= 0
-        nome_fundo = "game_over.png" if self.perdeu else "you_win.png"
+        self.perdeu = contadores["banana"] >= 3 or contadores["camera"] >= 3 or contadores["rosa"] <= 5
+        nome_fundo = "tela_derrota.png" if self.perdeu else "tela_vitoria.png"
         
         # 2. Carregamento de Assets
-        dir_cenario = os.path.join('assets', 'cenario')
+        dir_cenario = os.path.join('assets', 'telas de transição')
         self.bg = pg.image.load(os.path.join(dir_cenario, nome_fundo)).convert()
         self.bg = pg.transform.smoothscale(self.bg, self.screen.get_size())
         
@@ -33,7 +33,9 @@ class TelaFinal:
         self.x_caixa = 275  
         self.y_caixa = 165
         self.largura_caixa = 450
-        self.rect_botao = self.img_botao.get_rect(center=(self.screen.get_width() // 2, 640))
+        self.rect_botao = self.img_botao.get_rect(
+            center=(self.screen.get_width() // 2, self.screen.get_height() * 0.9)
+        )
 
     def obter_frases(self):
         frases = []
@@ -98,17 +100,16 @@ class TelaFinal:
         self.screen.blit(self.img_botao, self.rect_botao)
 
     def run(self):
-        while self.rodando:
+        while True:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    pg.quit(); sys.exit()
-                
-                if event.type == pg.MOUSEBUTTONDOWN:
-                    if self.rect_botao.collidepoint(event.pos):
-                        return True
-                    else:
-                        return False
-            
+                    pg.quit()
+                    sys.exit()
+
+                if event.type == pg.KEYDOWN:
+                    if event.key in (pg.K_RETURN, pg.K_ESCAPE):
+                        return  # volta pra main
+
             self.draw()
             pg.display.flip()
             self.clock.tick(60)
