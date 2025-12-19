@@ -80,7 +80,11 @@ PROJETO/
 ### · Cenário prinicipal
 <img width="1128" height="915" alt="image" src="https://github.com/user-attachments/assets/60c1d5bf-98a7-49ee-8383-2b49988edd8b" /> \
 ### · Cenário de chegada
-<img width="1119" height="910" alt="image" src="https://github.com/user-attachments/assets/0baf2f86-ea2c-41e0-91c7-0f6211fe507d" />
+<img width="1119" height="910" alt="image" src="https://github.com/user-attachments/assets/0baf2f86-ea2c-41e0-91c7-0f6211fe507d" /> \
+### . Tela de vitória
+<img width="1128" height="915" alt="image" src="https://github.com/user-attachments/assets/60c1d5bf-98a7-49ee-8383-2b49988edd8b" /> \
+### · Tela de derrota
+<img width="1128" height="915" alt="image" src="https://github.com/user-attachments/assets/60c1d5bf-98a7-49ee-8383-2b49988edd8b" />
 
 
 ## Ferramentas e bibliotecas utilizadas
