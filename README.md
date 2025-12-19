@@ -40,6 +40,25 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 | Marcela Parahym Xavier Lins, Sofia Avallone Sakovitz | Código principal |
 
 ## Arquitetura do projeto - CONCLUIR
+````
+PROJETO/
+|-- assets/               # Recursos estáticos do projeto
+|   |-- cenario/          # Imagens usadas para o cenário
+|   |-- fonte/            # Fonte utilizada para os textos
+|   |-- sprites/          # Sprites utilizadas para os coletáveis
+|-- src/                  # Código do projeto
+|   |-- cenarios/         # Definição das telas e da interface gráfica
+|   |   |-- desfile.py    # Lógica de renderização da tela do desfile
+|   |-- coletaveis/       # Módulo para coletáveis do jogo
+|   |   |-- banana.py     # Coletável: casca de banana
+|   |   |-- base.py       # Classe-mãe para coletáveis
+|   |   |-- camera.py     # Coletável: câmera
+|   |   |-- rosa.py       # Coletável: rosa
+|   |-- personagens/      # Módulo para personagens do jogo
+|   |   |-- gisele.py     # Personagem: Gisele
+|   |-- main.py           # Arquivo principal do projeto
+|-- README.md             # Arquivo informativo do projeto
+````
 
 ## Galeria do projeto - CONCLUIR
 
