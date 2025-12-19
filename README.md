@@ -68,7 +68,8 @@ PROJETO/
 |   |   |-- rosa.py         # Coletável: rosa
 |   |-- personagens/        # Módulo para personagens do jogo
 |   |   |-- gisele.py       # Personagem: Gisele
-|   |-- main.py             # Arquivo principal do projeto
+|   |-- main.py             # Arquivo principal do projeto]
+|-- .gitignore              # Identifica quais arquivos devem ser ignorados no controle de versão, deixando o repositório mais limpo
 |-- README.md               # Arquivo informativo do projeto
 ````
 
