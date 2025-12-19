@@ -48,25 +48,28 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 ## Arquitetura do projeto - CONCLUIR
 ````
 PROJETO/
-|-- assets/               # Recursos estáticos do projeto
-|   |-- cenario/          # Imagens usadas para o cenário
-|   |-- fonte/            # Fonte utilizada para os textos
-|   |-- sprites/          # Sprites utilizadas
-|   |   |-- coletaveis/   # Sprites: coletáveis
-|   |   |-- gisele/       # Sprites: personagem
-|   |-- sons/             # Música e efeitos sonoros utilizados no jogo
-|-- src/                  # Código fonte do projeto
-|   |-- cenarios/         # Definição das telas e da interface gráfica
-|   |   |-- desfile.py    # Lógica de renderização da tela do desfile
-|   |-- coletaveis/       # Módulo para coletáveis do jogo
-|   |   |-- banana.py     # Coletável: casca de banana
-|   |   |-- base.py       # Classe-mãe para coletáveis
-|   |   |-- camera.py     # Coletável: câmera
-|   |   |-- rosa.py       # Coletável: rosa
-|   |-- personagens/      # Módulo para personagens do jogo
-|   |   |-- gisele.py     # Personagem: Gisele
-|   |-- main.py           # Arquivo principal do projeto
-|-- README.md             # Arquivo informativo do projeto
+|-- assets/                 # Recursos estáticos do projeto
+|   |-- cenario/            # Imagens usadas para o cenário
+|   |-- fonte/              # Fonte utilizada para os textos
+|   |-- sprites/            # Sprites utilizadas
+|   |   |-- coletaveis/     # Sprites: coletáveis
+|   |   |-- gisele/         # Sprites: personagem
+|   |-- sons/               # Música e efeitos sonoros utilizados no jogo
+|   |-- telas de transição  # PNGs das telas inicial e final, além de seus botões
+|-- src/                    # Código fonte do projeto
+|   |-- cenarios/           # Definição das telas e da interface gráfica
+|   |   |-- desfile.py      # Lógica de renderização da tela do desfile
+|   |   |-- tela_inicial.py # Lógica da tela inicial e seus botões
+|   |   |-- tela_final.py   # Lógica da tela final, mensagens e botões
+|   |-- coletaveis/         # Módulo para coletáveis do jogo
+|   |   |-- banana.py       # Coletável: casca de banana
+|   |   |-- base.py         # Classe-mãe para coletáveis
+|   |   |-- camera.py       # Coletável: câmera
+|   |   |-- rosa.py         # Coletável: rosa
+|   |-- personagens/        # Módulo para personagens do jogo
+|   |   |-- gisele.py       # Personagem: Gisele
+|   |-- main.py             # Arquivo principal do projeto
+|-- README.md               # Arquivo informativo do projeto
 ````
 
 ## Galeria do projeto
