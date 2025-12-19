@@ -7,23 +7,23 @@ Nossa *übermodel* está de volta! Após anos afastada da passarela, **Gisele B�
 Mas há um detalhe: modelos invejosas realizaram um complô para sabotar o evento e dispersaram **cascas de banana** pelo caminho.\
 Ajude Gisele a driblar os obstáculos escorregadios e os ***paparazzi***, que enlouquecidamente a ofuscam com seus *flashes*, enquanto tenta coletar as **rosas** lançadas na passarela.\
 Atenção: basta uma única banana para abalar sua reputação e zerar as rosas coletadas.\
-Será que nossa musa consegue manter-se imune a quedas no *catwalk* e honrar o estrelato?\
+Será que nossa musa consegue manter-se imune a quedas no *catwalk* e honrar o estrelato?
 
 ### Objetivo
-Conduzir Gisele pelo desfile, driblando as cascas de banana e os *flashes* dos *paparazzi*, para coletar o máximo de rosas possível antes do fim da passarela.\
+Conduzir Gisele pelo desfile, driblando as cascas de banana e os *flashes* dos *paparazzi*, para coletar o máximo de rosas possível antes do fim da passarela.
 
 ### Mecânica e fases
 O jogo consiste em uma única fase, com **velocidade progressiva** a cada ciclo de 10 segundos: desfilar ao longo de 700 metros de passarela, esquivando-se das **cascas de banana** e das **câmeras**, e acumulando as **rosas** dispersas pelo percurso.\
 Os três tipos de coletáveis têm os seguintes efeitos:\
 **· Casca de banana:** Zerar a contagem de rosas. Se coletadas mais de 3, encerra o jogo — **game over**.\
 **· Câmera:** Ofuscar a tela durante 0,3 segundo. Se coletadas mais de 3, encerra o jogo — **game over**.\
-**· Rosa:** Somar pontos ao relatório final do jogo.\
+**· Rosa:** Somar pontos ao relatório final do jogo.
 
 ## Participantes do projeto
 · Beatriz de Araújo Ciríaco do Rêgo Barros <bacrb>\
 · Gabriela Tavares Benevides <gtb>\
 · Marcela Parahym Xavier Lins <mpxl>\
-· Sofia Avallone Sakovitz <sas3>\
+· Sofia Avallone Sakovitz <sas3>
 
 ## Organização e desenvolvimento do jogo
 A execução do projeto foi repartida entre o grupo tendo em vista não apenas sua eficiência, mas também as preferências de cada integrante e a colaboração mútua.
@@ -79,43 +79,43 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 ## Desafios e lições aprendidas
 # Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
 Errou-se em subestimar, a princípio, a dimensão das tarefas necessárias e a possibilidade de surgirem percalços ao longo da jornada.
-O redirecionamento do projeto primário, auxiliado pelos *checkpoints*, mostrou-se uma necessidade, mas, ao fim, também um aprendizado.\  
+O redirecionamento do projeto primário, auxiliado pelos *checkpoints*, mostrou-se uma necessidade, mas, ao fim, também um aprendizado.  
 
 # Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
 O maior desafio foi, certamente, o gerenciar o tempo e conciliar demandas internas — que, muitas vezes, exigiam a aquisição de novas habilidades — e externas.
 Para isso, alinhar as expectativas inicias ao que era passível de execução no tempo e nas condições disponíveis foi fundamental.
 Adaptaram-se, assim, as ideias originais para que resultassem em um projeto factível, focado em contemplar com sucesso os requisitos listados,
-mas ainda instigante e conectado com os interesses e a criatividade do grupo.\
+mas ainda instigante e conectado com os interesses e a criatividade do grupo.
 
 # Quais as lições aprendidas durante o projeto?
 Para além das lições relativas à programação, o projeto foi enriquecedor no aprendizado do trabalho em grupo: a divisão de tarefas, a comunicação entre a equipe,
-o compromisso com as metas estabelecidas e o entendimento de que colaborar requer, sobretudo, disciplina, parcimônia e compreensão para que se alcance o resultado almejado.\
+o compromisso com as metas estabelecidas e o entendimento de que colaborar requer, sobretudo, disciplina, parcimônia e compreensão para que se alcance o resultado almejado.
 
 ## Conceitos da disciplina aplicados
 
 ### Classes
 A classes deram forma ao código. Por elas, os elementos do código puder ser representados como objetos — a exemplo de `Base`,
-classe-mãe para os coletáveis, que lhes atribuía os *sprites* e a formatação desejada.\
+classe-mãe para os coletáveis, que lhes atribuía os *sprites* e a formatação desejada.
 
 ### Funções
 As funções também foram de grande relevância no projeto: organizaram os blocos de ação relativos à mecânica de jogo de forma concisa e eficiente.
-`atualizar_fisica()`, `atualizar_animacao()` e `pular()`, por exemplo, modularizaram a classe da personagem.\
+`atualizar_fisica()`, `atualizar_animacao()` e `pular()`, por exemplo, modularizaram a classe da personagem.
 
 ### Laços de repetição
 Em `main`, foi o *loop* `while` que garantiu a execução contínua do jogo, com dados, coletáveis e cenários atualizados.
-Já os *loops* `for` foram indispensáveis à dinâmica aplicada aos coletáveis, tanto em sua geração quanto em sua contabilização.\
+Já os *loops* `for` foram indispensáveis à dinâmica aplicada aos coletáveis, tanto em sua geração quanto em sua contabilização.
 
 ### Dicionários
-Usaram-se dicionários, especialmente, na implementação dos `contadores` e dos atributos retornados por `gerar_coletavel()`.\
+Usaram-se dicionários, especialmente, na implementação dos `contadores` e dos atributos retornados por `gerar_coletavel()`.
 
 ### Condicionais
-Amplamente utilizadas no código, determinaram o encadeamento de eventos, as condições para execuçãod as classes, a movimentação de Gisele e o controle da aceleração e da saída do jogo.\
+Amplamente utilizadas no código, determinaram o encadeamento de eventos, as condições para execuçãod as classes, a movimentação de Gisele e o controle da aceleração e da saída do jogo.
 
 ### Listas
-O uso de listas, como `alturas_coletaveis`, embora moderado, auxiliou a definição de constantes de posicionamento dos coletáveis na tela.\
+O uso de listas, como `alturas_coletaveis`, embora moderado, auxiliou a definição de constantes de posicionamento dos coletáveis na tela.
 
 ### Tuplas
-Tuplas foram primordiais para o estabelecimento de constantes para armazenar dados de posicionamento na tela e das cores utilizadas segundo padrão RGB.\
+Tuplas foram primordiais para o estabelecimento de constantes para armazenar dados de posicionamento na tela e das cores utilizadas segundo padrão RGB.
 
 ## Como jogar
 
