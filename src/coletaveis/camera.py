@@ -21,7 +21,7 @@ class Camera(Base):
         self.flash_raio = 0
         self.flash_raio_max = int(math.hypot(largura_tela, altura_tela))
         self.flash_tempo_tela_total = 0
-
+        
     def desenhar_flash(self, tela, dimensoes_tela):
 
         if not self.flash:

@@ -21,12 +21,14 @@ class Gisele:
         self.frame_interval = 0.06
 
         self.player_x = 120
+        self.velocidade_x = 8
         self.chao = 525
         self.player_y = self.chao
 
         self.vel_y = 0
         self.gravidade = 1
         self.pulando = False
+        self.andando = True # essa flag serve pra sinalizar que no final, ela deve parar a animação
 
     def atualizar_fisica(self): # VERIFICAR APLICAÇÃO DE SELF E SELF
 
@@ -40,7 +42,7 @@ class Gisele:
 
     def atualizar_animacao(self, delta_time): # VERIFICAR APLICAÇÃO DE SELF
 
-        if not self.pulando:
+        if not self.pulando and self.andando:
             self.frame_timer += delta_time
             if self.frame_timer >= self.frame_interval:
                 self.frame_timer = 0
@@ -57,4 +59,13 @@ class Gisele:
         tela.blit(self.gisele_frames[self.frame_idx], (self.player_x, self.player_y))
 
     def get_rect(self): # VERIFICAR APLICAÇÃO DE SELF
-        return pygame.Rect(self.player_x, self.player_y, 80, 80)
+        
+        largura_hitbox = 50
+        altura_hitbox = 70
+        
+        # centralizando a hitbox na posição da Gisele
+        ajuste_x = (80 - largura_hitbox) // 2
+        ajuste_y = (80 - altura_hitbox)
+
+        return pygame.Rect(self.player_x + ajuste_x, self.player_y + ajuste_y, largura_hitbox, altura_hitbox)
+    

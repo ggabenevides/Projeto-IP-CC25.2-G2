@@ -4,7 +4,7 @@ from sys import exit
 import random
 import os
 
-# inicializando pygame + criando tela + inicializando variáveis globais + acelerando gradualmente jogo
+# inicializando pygame + criando tela + inicializando variáveis globais + aceleração gradual do cenário
 altura_tela = 700
 largura_tela = 900
 dimensoes_tela = (largura_tela, altura_tela)
@@ -16,6 +16,8 @@ ACELERAR = pygame.USEREVENT + 1
 pygame.time.set_timer(ACELERAR, 10000)
 
 # importando classes
+from cenarios.tela_inicial import TelaInicial
+from cenarios.tela_final import TelaFinal
 from cenarios.desfile import Desfile
 from personagens.gisele import Gisele
 from coletaveis.base import Base
@@ -28,19 +30,53 @@ base_engine = Base()
 gisele = Gisele()
 banana = Banana()
 camera = Camera()
+tela_inicial = TelaInicial(tela)
+
+# carregando imagens
+FONTE_HUD = pygame.font.Font(os.path.join('assets', 'fonte', 'fonte.ttf'), 20)
+HUD_BG = pygame.image.load(os.path.join('assets', 'cenario', 'placa_contadores1.png')).convert_alpha()
+HUD_BG = pygame.transform.scale(HUD_BG, (250, 110))
+LINHA_CHEGADA = pygame.image.load(os.path.join('assets', 'cenario', 'passarela_chegada.png')).convert_alpha()
+LINHA_CHEGADA = pygame.transform.scale(LINHA_CHEGADA, dimensoes_tela)
+
+# carregando música de fundo
+musica_fundo = pygame.mixer.music.load(os.path.join('assets', 'sons', 'bg_music.mp3'))
+pygame.mixer.music.set_volume(0.30)
+pygame.mixer.music.play(-1)
+
+# efeitos sonoros
+som_vitoria = pygame.mixer.Sound(os.path.join('assets', 'sons','win_sound.mp3'))
+som_vitoria.set_volume(0.50)
+som_derrota  = pygame.mixer.Sound(os.path.join('assets', 'sons', 'game_over_sound.mp3'))
+som_derrota.set_volume(0.50)
+som_rosa = pygame.mixer.Sound(os.path.join('assets', 'sons', 'coleta_rosa.wav'))
+som_rosa.set_volume(0.50)
+som_camera = pygame.mixer.Sound(os.path.join('assets', 'sons', 'efeito_flash.mp3'))
+som_camera.set_volume(0.50)
+som_banana = pygame.mixer.Sound(os.path.join('assets', 'sons', 'efeito_banana.wav'))
+som_banana.set_volume(0.50)
 
 def main():
 
     global run 
     run = True
+    finalizando = False
+    perdeu = False
+    som_vitoria_played = False
+    som_derrota_played = False
+    gisele.player_y = 500 # ou a posição inicial dela
+    gisele.player_x = 100
+    gisele.esta_pulando = False
 
     # configurando cenário
+    tela_inicial.rodar()
     bg_image, bg_width, tiles, scroll = Desfile.iniciar_passarela(dimensoes_tela, largura_tela)
 
     # definindo distância
     distancia_pixels = 0
     pixels_por_metro = 20
-    meta_metros = 700
+    meta_metros = 500
+    vel_coletavel = 7
 
     # dicionários com os contadores
     contadores = {
@@ -64,14 +100,15 @@ def main():
             )
         )
 
-    vel_coletavel = 7
-
     # loop principal
     while run:
+        # variaveis locais
         delta_time = relogio.tick(30) / 1000.0 # tempo decorrido em segundos
+        meta_metros = 500
+        tela.fill((0,0,0))
 
-        for event in pygame.event.get(): # fechar a janela do jogo
-            if event.type == QUIT:
+        for event in pygame.event.get(): 
+            if event.type == QUIT: # fechar a janela do jogo
                 pygame.quit()
                 exit()
 
@@ -86,11 +123,22 @@ def main():
         gisele.atualizar_fisica()
         gisele.atualizar_animacao(delta_time)
 
-        # desenhando o cenário
-        for i in range(tiles):
-            tela.blit(bg_image, (i * bg_width + scroll, 0))
+        if not finalizando:
+            for i in range(tiles):
+                tela.blit(bg_image, (i * bg_width + scroll, 0))
+            scroll -= (7 + vel_coletavel)
+            if abs(scroll) > bg_width:
+                scroll = 0
+        else:
+            # estado de finalização: o cenário para de rodar em loop
+            # e desenhamos a passarela de chegada deslizando uma única vez
+            tela.blit(LINHA_CHEGADA, (0, 0))
+            
+            gisele.player_x += 5
 
-        scroll -= vel_coletavel
+            if gisele.player_x >= largura_tela:
+                 run = False # fim do jogo / tela de vitória
+
         if abs(scroll) > bg_width:
             scroll = 0
 
@@ -99,34 +147,38 @@ def main():
         distancia_metros = distancia_pixels // pixels_por_metro
 
         # movimentação dos coletáveis
-        for coletavel in coletaveis:
-            coletavel["rect"].x -= vel_coletavel
+        if not finalizando:
+            for coletavel in coletaveis:
+                coletavel["rect"].x -= vel_coletavel
 
-            if coletavel["rect"].right < 0:
-                alturas_ocupadas = [c["rect"].y for c in coletaveis if c != coletavel]
-                xs_ocupados = [c["rect"].x for c in coletaveis if c != coletavel]
-                coletavel.update(
-                    base_engine.gerar_coletavel(
-                        random.choice(base_engine.sprites_coletaveis),
-                        alturas_ocupadas,
-                        xs_ocupados,
-                        largura_tela
+                if coletavel["rect"].right < 0:
+                    alturas_ocupadas = [c["rect"].y for c in coletaveis if c != coletavel]
+                    xs_ocupados = [c["rect"].x for c in coletaveis if c != coletavel]
+                    coletavel.update(
+                        base_engine.gerar_coletavel(
+                            random.choice(base_engine.sprites_coletaveis),
+                            alturas_ocupadas,
+                            xs_ocupados,
+                            largura_tela
+                        )
                     )
-                )
 
-        gisele_rect = gisele.get_rect()
+            gisele_rect = gisele.get_rect()
 
         # colisões
         for coletavel in coletaveis:
             if gisele_rect.colliderect(coletavel["rect"]):
                 if coletavel["coletavel"] == base_engine.sprites_coletaveis[2]:
                     Rosa.efeito_rosa(contadores)
+                    som_rosa.play()
                 else:
                     if coletavel["coletavel"] == base_engine.sprites_coletaveis[0]:
                         Banana.efeito_banana(contadores)
+                        som_banana.play()
                     elif coletavel["coletavel"] == base_engine.sprites_coletaveis[1]:
                         Camera.efeito_camera(contadores)
-                        Camera.iniciar_flash(Camera, largura_tela, altura_tela)
+                        camera.iniciar_flash(largura_tela, altura_tela)
+                        som_camera.play()
 
                 alturas_ocupadas = [c["rect"].y for c in coletaveis if c != coletavel]
                 xs_ocupados = [c["rect"].x for c in coletaveis if c != coletavel]
@@ -148,33 +200,20 @@ def main():
 
         # HUD 
         fundo_x = 20
-        fundo_y = 20
-        fundo_largura = 250
-        fundo_altura = 90
-        fonte = pygame.Font((os.path.join('assets', 'fonte', 'fonte.ttf')), 20)
+        fundo_y = 8
 
-        pygame.draw.rect(
-            tela,
-            (180, 180, 180),
-            (fundo_x, fundo_y, fundo_largura, fundo_altura)
-        )
-        pygame.draw.rect(
-            tela,
-            (126, 77, 113),
-            (fundo_x, fundo_y, fundo_largura, fundo_altura),
-            4
-        )
+        tela.blit(HUD_BG, (fundo_x, fundo_y))
 
         margin_x = fundo_x + 20
 
-        texto_distancia = fonte.render(f"{distancia_metros} m", True, (0, 0, 0))
-        tela.blit(texto_distancia, (margin_x, fundo_y + 45))
+        texto_distancia = FONTE_HUD.render(f"{distancia_metros} m", True, (0, 0, 0))
+        tela.blit(texto_distancia, (margin_x, fundo_y + 55))
 
         icones = ["banana", "camera", "rosa"]
         for i, sprite in enumerate(base_engine.sprites_coletaveis):
             tela.blit(sprite, (margin_x, 25))
             nome_item = icones[i]
-            texto = fonte.render(str(contadores[nome_item]), True, (0, 0, 0))
+            texto = FONTE_HUD.render(str(contadores[nome_item]), True, (0, 0, 0))
             tela.blit(texto, (margin_x + 45, 30))
             margin_x += 65
 
@@ -182,13 +221,35 @@ def main():
         camera.desenhar_flash(tela, dimensoes_tela)
 
         # fim do jogo
-        if contadores["banana"] >= 4 or contadores["camera"] >= 4:
+        if contadores["banana"] >= 3 or contadores["camera"] >= 3:
             run = False
-        elif distancia_metros >= meta_metros:
-            run = False
-
+            perdeu = True
+            # tela de game over
+        elif distancia_metros >= meta_metros-50:
+            finalizando = True
         pygame.display.update()
+
+        if perdeu:
+            pygame.mixer.music.stop()
+            if not som_derrota_played:
+                som_derrota.play()
+                som_derrota_played = True
+            # Chame o método da tela final que exibe derrota
+            tela_final = TelaFinal(tela, contadores, distancia_metros, meta_metros)
+            return tela_final.run() # retornar True para reiniciar ou False para sair
+                
+        if finalizando:
+            pygame.mixer.music.stop()
+            if not som_vitoria_played:
+                som_vitoria.play()
+                som_vitoria_played = True
+            tela_final = TelaFinal(tela, contadores, distancia_metros, meta_metros)
+            return tela_final.run()
 
 # chamando função principal
 if __name__ == "__main__":
-    main()
+    while True: # Loop de reinicialização do jogo
+        jogar_novamente = main()
+        if not jogar_novamente:
+            break
+    pygame.quit()
