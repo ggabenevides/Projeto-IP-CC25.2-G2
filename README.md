@@ -52,7 +52,8 @@ PROJETO/
 |   |-- cenario/          # Imagens usadas para o cenário
 |   |-- fonte/            # Fonte utilizada para os textos
 |   |-- sprites/          # Sprites utilizadas para os coletáveis
-|-- src/                  # Código do projeto
+|   |-- sons/             # Música e efeitos sonoros utilizados no jogo
+|-- src/                  # Código fonte do projeto
 |   |-- cenarios/         # Definição das telas e da interface gráfica
 |   |   |-- desfile.py    # Lógica de renderização da tela do desfile
 |   |-- coletaveis/       # Módulo para coletáveis do jogo
@@ -66,7 +67,11 @@ PROJETO/
 |-- README.md             # Arquivo informativo do projeto
 ````
 
-## Galeria do projeto - CONCLUIR
+## Galeria do projeto
+<img width="1128" height="915" alt="image" src="https://github.com/user-attachments/assets/60c1d5bf-98a7-49ee-8383-2b49988edd8b" />
+<img width="1132" height="904" alt="image" src="https://github.com/user-attachments/assets/051e1a6d-fd5f-4d59-a93d-c07ced510462" />
+<img width="1119" height="910" alt="image" src="https://github.com/user-attachments/assets/0baf2f86-ea2c-41e0-91c7-0f6211fe507d" />
+
 
 ## Ferramentas e bibliotecas utilizadas
 
@@ -78,7 +83,10 @@ PROJETO/
 | Random     | Analogamente a Math, foi crucial para certos trechos do código, especialmente na atribuição randômica de coletáveis. Biblioteca padrão de Python. |
 | Os         | Módulo útil ao carregamento de arquivos por seu caminho. Biblioteca padrão de Python. |
 | Sys        | Utilizada na interação com o sistema operacional para o encerramento do programa. Biblioteca padrão de Python. |
-| GitHub     | Plataforma basilar para a estruturação do projeto de forma coesa e colaborativa. Viabilizou o trabalho em equipe, o gerenciamento de tarefas e a hospedagem do código e dos arquivos utilizados. |        
+| GitHub     | Plataforma basilar para a estruturação do projeto de forma coesa e colaborativa. Viabilizou o trabalho em equipe, o gerenciamento de tarefas e a hospedagem do código e dos arquivos utilizados. |
+| Piskel     | Ferramenta que possibilitou o design das sprites. |
+| Canva      | Plataforma que auxiliou o desenvolvimento das telas de transição e dos slides de apresentação do projeto. |
+| PenUp      | Ferramenta de desenho digital utilizada para o design de cenário. |
 
 ## Desafios e lições aprendidas
 ### Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
