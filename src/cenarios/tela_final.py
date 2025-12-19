@@ -98,10 +98,7 @@ class TelaFinal:
         y_atual += 15
         for frase in self.obter_frases():
             y_atual = self.draw_texto_quebrado(frase, self.x_caixa + 35, y_atual, self.largura_caixa)
-            y_atual += 12 
-
-        # teste (apagar)
-        pg.draw.rect(self.screen, (255, 0, 0), self.rect_click_botao, 2)
+            y_atual += 12
 
     def run(self):
         while True:
