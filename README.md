@@ -33,7 +33,7 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 
 ## Divisão de tarefas
 
-| Integrante(s)               | Tarefas               |
+| Integrante(s)               | Tarefa                |
 ------------------------------|-----------------------|
 | Beatriz de Araújo Ciríaco do Rêgo Barros | Tela de início e tela final |
 | Gabriela Tavares Benevides | Personagens, sons, cenários e coletáveis |
