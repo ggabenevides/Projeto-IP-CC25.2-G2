@@ -12,7 +12,7 @@ Ajude Gisele a driblar os obstáculos escorregadios e os ***paparazzi***, que en
 
 **Atenção:** basta uma única banana para abalar sua reputação e zerar as rosas coletadas.
 
-Será que nossa musa consegue manter-se imune a quedas no *catwalk* e honrar o estrelato?
+Será que a musa consegue manter-se imune a quedas no *catwalk* e honrar o estrelato?
 
 ### Objetivo
 Conduzir Gisele pelo desfile, driblando as cascas de banana e os *flashes* dos *paparazzi*, para coletar o máximo de rosas possível antes do fim da passarela.
