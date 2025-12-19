@@ -68,7 +68,7 @@ class TelaFinal:
         return frases
 
     def draw_texto_quebrado(self, texto, x, y, largura_max):
-        linhas = textwrap.wrap(texto, width=48) 
+        linhas = textwrap.wrap(texto, width=38) 
         for linha in linhas:
             img_linha = self.fonte_frases.render(linha, True, (0, 0, 0))
             self.screen.blit(img_linha, (x, y))
