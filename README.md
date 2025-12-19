@@ -76,7 +76,6 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 | Github     | Plataforma basilar para a estruturação do projeto de forma coesa e colaborativa.   |
 |            | Viabilizou o trabalho em equipe, o gerenciamento de tarefas e a hospedagem         |
 |            | do código e dos arquivos utilizados.                                               |        
-|------------|------------------------------------------------------------------------------------|
 
 ## Desafios e lições aprendidas
 # Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
@@ -130,7 +129,7 @@ Após o primeiro passo, deve-se iniciar o arquivo `main`:\
 ````python main.py````
 
 **3. Controles do jogo**
-Para controlar o jogo, podem-se usar os seguintes comandos:\
+Para controlar o jogo, podem-se usar os seguintes comandos:
 
 | Entrada                          | Ação                      |
 |----------------------------------|---------------------------|
@@ -141,5 +140,4 @@ Para controlar o jogo, podem-se usar os seguintes comandos:\
 | `ESC`                            | Voltar ao menu            |
 |----------------------------------|---------------------------|
 | `Mouse`                          | Clicar nos botões da tela |
-|----------------------------------|---------------------------|
 
