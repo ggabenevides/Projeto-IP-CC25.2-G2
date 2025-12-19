@@ -4,7 +4,7 @@ from sys import exit
 import random
 import os
 
-# inicializando pygame + criando tela + inicializando variáveis globais + acelerando gradualmente jogo
+# inicializando pygame + criando tela + inicializando variáveis globais + aceleração gradual do cenário
 altura_tela = 700
 largura_tela = 900
 dimensoes_tela = (largura_tela, altura_tela)
@@ -36,12 +36,31 @@ HUD_BG = pygame.transform.scale(HUD_BG, (250, 110))
 LINHA_CHEGADA = pygame.image.load(os.path.join('assets', 'cenario', 'passarela_chegada.png')).convert_alpha()
 LINHA_CHEGADA = pygame.transform.scale(LINHA_CHEGADA, dimensoes_tela)
 
+# carregando música de fundo
+musica_fundo = pygame.mixer.music.load(os.path.join('assets', 'sons', 'bg_music.mp3'))
+pygame.mixer.music.set_volume(0.30)
+pygame.mixer.music.play(-1)
+
+# efeitos sonoros
+som_vitoria = pygame.mixer.Sound(os.path.join('assets', 'sons','win_sound.mp3'))
+som_vitoria.set_volume(0.50)
+som_derrota  = pygame.mixer.Sound(os.path.join('assets', 'sons', 'game_over_sound.mp3'))
+som_derrota.set_volume(0.50)
+som_rosa = pygame.mixer.Sound(os.path.join('assets', 'sons', 'coleta_rosa.wav'))
+som_rosa.set_volume(0.50)
+som_camera = pygame.mixer.Sound(os.path.join('assets', 'sons', 'efeito_flash.mp3'))
+som_camera.set_volume(0.50)
+som_banana = pygame.mixer.Sound(os.path.join('assets', 'sons', 'efeito_banana.wav'))
+som_banana.set_volume(0.50)
+
 def main():
 
     global run 
     run = True
     finalizando = False
-    scroll_final = 0
+    perdeu = False
+    som_vitoria_played = False
+    som_derrota_played = False
 
     # configurando cenário
     bg_image, bg_width, tiles, scroll = Desfile.iniciar_passarela(dimensoes_tela, largura_tela)
@@ -50,6 +69,7 @@ def main():
     distancia_pixels = 0
     pixels_por_metro = 20
     meta_metros = 500
+    vel_coletavel = 7
 
     # dicionários com os contadores
     contadores = {
@@ -72,8 +92,6 @@ def main():
                 largura_tela
             )
         )
-
-    vel_coletavel = 7
 
     # loop principal
     while run:
@@ -107,18 +125,13 @@ def main():
         else:
             # estado de finalização: o cenário para de rodar em loop
             # e desenhamos a passarela de chegada deslizando uma única vez
-            tela.blit(LINHA_CHEGADA, (0, 0))/
-            
-            if largura_tela + scroll_final > 0:
-                scroll_final -= 7 # velocidade da linha entrando na tela
-                scroll -= vel_coletavel
+            tela.blit(LINHA_CHEGADA, (0, 0))
             
             gisele.player_x += 5
 
             if gisele.player_x >= largura_tela:
                  run = False # fim do jogo / tela de vitória
 
-        scroll -= vel_coletavel
         if abs(scroll) > bg_width:
             scroll = 0
 
@@ -150,12 +163,15 @@ def main():
             if gisele_rect.colliderect(coletavel["rect"]):
                 if coletavel["coletavel"] == base_engine.sprites_coletaveis[2]:
                     Rosa.efeito_rosa(contadores)
+                    som_rosa.play()
                 else:
                     if coletavel["coletavel"] == base_engine.sprites_coletaveis[0]:
                         Banana.efeito_banana(contadores)
+                        som_banana.play()
                     elif coletavel["coletavel"] == base_engine.sprites_coletaveis[1]:
                         Camera.efeito_camera(contadores)
                         camera.iniciar_flash(largura_tela, altura_tela)
+                        som_camera.play()
 
                 alturas_ocupadas = [c["rect"].y for c in coletaveis if c != coletavel]
                 xs_ocupados = [c["rect"].x for c in coletaveis if c != coletavel]
@@ -177,22 +193,9 @@ def main():
 
         # HUD 
         fundo_x = 20
-        fundo_y = 20
-        fundo_largura = 250
-        fundo_altura = 90
-        fonte = pygame.Font((os.path.join('assets', 'fonte', 'fonte.ttf')), 20)
+        fundo_y = 8
 
-        pygame.draw.rect(
-            tela,
-            (180, 180, 180),
-            (fundo_x, fundo_y, fundo_largura, fundo_altura)
-        )
-        pygame.draw.rect(
-            tela,
-            (126, 77, 113),
-            (fundo_x, fundo_y, fundo_largura, fundo_altura),
-            4
-        )
+        tela.blit(HUD_BG, (fundo_x, fundo_y))
 
         margin_x = fundo_x + 20
 
@@ -217,6 +220,20 @@ def main():
             # tela de game over
         elif distancia_metros >= meta_metros-50:
             finalizando = True
+
+        if perdeu:
+            pygame.mixer.music.stop()
+            if not som_derrota_played:
+                som_derrota.play()
+                som_derrota_played = True
+            # aqui transição p tela de derrota
+            
+        if finalizando:
+            pygame.mixer.music.stop()
+            if not som_vitoria_played:
+                som_vitoria.play()
+                som_vitoria_played = True
+            # aqui transição p tela de vitoria
 
         pygame.display.update()
 
