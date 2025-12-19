@@ -21,10 +21,26 @@ class TelaInicial:
         self.fonte_titulo = pg.font.Font(path_fonte, 22)
         self.fonte_pequena = pg.font.Font(path_fonte, 12)
 
-        # Formato
-        self.btn_iniciar = pg.Rect(290, 475, 220, 40)
-        self.btn_instrucoes = pg.Rect(290, 525, 220, 40)
-        self.btn_fechar_inst = pg.Rect(520, 160, 35, 35)
+        # dimensões da tela
+        w, h = self.screen.get_size()
+
+        # botão de iniciar
+        self.btn_iniciar = pg.Rect(
+            int(w * 0.39),
+            int(h * 0.80),
+            int(w * 0.24),
+            int(h * 0.06)
+        )
+
+        # botão de instruções
+        self.btn_instrucoes = pg.Rect(
+            int(w * 0.39),
+            int(h * 0.88),
+            int(w * 0.24),
+            int(h * 0.06)
+        )
+
+        self.btn_fechar_inst = pg.Rect(0, 0, 35, 35)
 
     def desenhar(self):
         self.screen.blit(self.bg, (0, 0))
