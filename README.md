@@ -68,18 +68,18 @@ PROJETO/
 |   |   |-- rosa.py         # Coletável: rosa
 |   |-- personagens/        # Módulo para personagens do jogo
 |   |   |-- gisele.py       # Personagem: Gisele
-|   |-- main.py             # Arquivo principal do projeto]
-|-- .gitignore              # Identifica quais arquivos devem ser ignorados no controle de versão, deixando o repositório mais limpo
+|   |-- main.py             # Arquivo principal do projeto
+|-- .gitignore              # Identificação de quais arquivos devem ser ignorados no controle de versão, deixando o repositório mais limpo
 |-- README.md               # Arquivo informativo do projeto
 ````
 
 ## Galeria do projeto
-· Tela inicial \
+# · Tela inicial \
 <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/82efbbf6-5494-430b-95ff-46d510fef414" /> \
-· Cenário prinicipal \
+# · Cenário prinicipal \
 <img width="1128" height="915" alt="image" src="https://github.com/user-attachments/assets/60c1d5bf-98a7-49ee-8383-2b49988edd8b" /> \
-· Cenário de chegada \
-<img width="1119" height="910" alt="image" src="https://github.com/user-attachments/assets/0baf2f86-ea2c-41e0-91c7-0f6211fe507d" /> \
+# · Cenário de chegada \
+<img width="1119" height="910" alt="image" src="https://github.com/user-attachments/assets/0baf2f86-ea2c-41e0-91c7-0f6211fe507d" />
 
 
 ## Ferramentas e bibliotecas utilizadas
@@ -93,7 +93,7 @@ PROJETO/
 | Os         | Módulo útil ao carregamento de arquivos por seu caminho. Biblioteca padrão de Python. |
 | Sys        | Utilizada na interação com o sistema operacional para o encerramento do programa. Biblioteca padrão de Python. |
 | GitHub     | Plataforma basilar para a estruturação do projeto de forma coesa e colaborativa. Viabilizou o trabalho em equipe, o gerenciamento de tarefas e a hospedagem do código e dos arquivos utilizados. |
-| Piskel     | Ferramenta que possibilitou o design das sprites. |
+| Piskel     | Ferramenta que possibilitou o design das *sprites*. |
 | Canva      | Plataforma que auxiliou o desenvolvimento das telas de transição e dos slides de apresentação do projeto. |
 | PenUp      | Ferramenta de desenho digital utilizada para o design de cenário. |
 
