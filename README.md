@@ -53,7 +53,7 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 | Random     | Analogamente a Math, foi crucial para certos trechos do código, especialmente na atribuição randômica de coletáveis. Biblioteca padrão de Python. |
 | Os         | Módulo útil ao carregamento de arquivos por seu caminho. Biblioteca padrão de Python. |
 | Sys        | Utilizada na interação com o sistema operacional para o encerramento do programa. Biblioteca padrão de Python. |
-| Github     | Plataforma basilar para a estruturação do projeto de forma coesa e colaborativa. Viabilizou o trabalho em equipe, o gerenciamento de tarefas e a hospedagem do código e dos arquivos utilizados. |        
+| GitHub     | Plataforma basilar para a estruturação do projeto de forma coesa e colaborativa. Viabilizou o trabalho em equipe, o gerenciamento de tarefas e a hospedagem do código e dos arquivos utilizados. |        
 
 ## Desafios e lições aprendidas
 # Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
