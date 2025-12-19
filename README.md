@@ -46,7 +46,7 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 | Marcela Parahym Xavier Lins | · Desenvolvimento do código principal;<br>· Refinamento de detalhes gráficos;<br>· Relatório final (READ.me). |
 | Sofia Avallone Sakovitz | · Desenvolvimento do código principal;<br>· Slides da apresentação. |
 
-## Arquitetura do projeto - CONCLUIR
+## Arquitetura do projeto
 ````
 PROJETO/
 |-- assets/                 # Recursos estáticos do projeto
@@ -75,11 +75,11 @@ PROJETO/
 ````
 
 ## Galeria do projeto
-# · Tela inicial \
+# · Tela inicial
 <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/82efbbf6-5494-430b-95ff-46d510fef414" /> \
-# · Cenário prinicipal \
+# · Cenário prinicipal
 <img width="1128" height="915" alt="image" src="https://github.com/user-attachments/assets/60c1d5bf-98a7-49ee-8383-2b49988edd8b" /> \
-# · Cenário de chegada \
+# · Cenário de chegada
 <img width="1119" height="910" alt="image" src="https://github.com/user-attachments/assets/0baf2f86-ea2c-41e0-91c7-0f6211fe507d" />
 
 
