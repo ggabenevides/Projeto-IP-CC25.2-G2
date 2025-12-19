@@ -17,8 +17,8 @@ O jogo consiste em uma única fase, com **velocidade progressiva** a cada ciclo 
 
 Os três tipos de coletáveis têm os seguintes efeitos:
 
-**· Casca de banana:** Zerar a contagem de rosas. Se coletadas mais de 3, encerra o jogo — **game over**.\
-**· Câmera:** Ofuscar a tela durante 0,3 segundo. Se coletadas mais de 3, encerra o jogo — **game over**.\
+**· Casca de banana:** Zerar a contagem de rosas. Se coletadas mais de 3, encerra-se o jogo — **game over**.\
+**· Câmera:** Ofuscar a tela durante 0,3 segundo. Se coletadas mais de 3, encerra-se o jogo — **game over**.\
 **· Rosa:** Somar pontos ao relatório final do jogo.
 
 ## Participantes do projeto
