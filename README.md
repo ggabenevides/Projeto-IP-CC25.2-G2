@@ -35,14 +35,9 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 
 | Integrante(s)               | Tarefas               |
 ------------------------------|-----------------------|
-| Beatriz de Araújo           | Tela de início        |
-| Ciríaco do Rêgo Barros      | e tela final          |
-------------------------------|-----------------------|
-| Gabriela Tavares Benevides  | Personagens, sons,    |
-|                             | cenários e coletáveis |
-|-----------------------------|-----------------------|
-| Marcela Parahym Xavier Lins | Código principal      |
-| Sofia Avallone Sakovitz     |                       |
+| Beatriz de Araújo Ciríaco do Rêgo Barros | Tela de início e tela final |
+| Gabriela Tavares Benevides | Personagens, sons, cenários e coletáveis |
+| Marcela Parahym Xavier Lins\Sofia Avallone Sakovitz | Código principal |
 
 ## Arquitetura do projeto - CONCLUIR
 
