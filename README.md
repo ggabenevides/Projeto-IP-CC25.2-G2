@@ -106,7 +106,7 @@ Antes de jogar, é preciso verificar a instalação de **Python 3.x** e, uma vez
 Após o primeiro passo, deve-se iniciar o arquivo `main`:\
 ````python main.py````
 
-**3. Controles do jogo**
+**3. Controles do jogo**\
 Para controlar o jogo, podem-se usar os seguintes comandos:
 
 | Entrada                          | Ação                      |
