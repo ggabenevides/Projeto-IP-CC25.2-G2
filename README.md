@@ -52,30 +52,19 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 
 | Ferramenta | Justificativa                                                                      |
 |------------|------------------------------------------------------------------------------------|
-| VS Code    | Ambiente de desenvolvimento integrado (IDE) adotado no projeto por oferecer         |
-|            | desempenho consistente, robusto e eficiente para Python, com capacidade de         |
-|            | integrar-se nativamente ao Git — atributos substanciais para a equipe.             |
+| VS Code    | Ambiente de desenvolvimento integrado (IDE) adotado no projeto por oferecer desempenho consistente, robusto e eficiente para Python, com capacidade de integrar-se nativamente ao Git — atributos substanciais para a equipe. |
 |------------|------------------------------------------------------------------------------------|
-| Pygame     | Requisito do projeto, Pygame é uma biblioteca consolidada para jogos 2D em Python. |
-|            | Ofertou uma gama de funcionalidades caras à elaboração do código e à lapidação     |
-|            | da dinâmica implementada.                                                          |
+| Pygame     | Requisito do projeto, Pygame é uma biblioteca consolidada para jogos 2D em Python. Ofertou uma gama de funcionalidades caras à elaboração do código e à lapidação da dinâmica implementada.|
 |------------|------------------------------------------------------------------------------------|
-| Math       | Biblioteca designada ao uso de funções e constantes matemáticas                    |
-|            | aplicadas a certas dinâmicas do jogo. Seu uso otimizou                             |
-|            | significativamente a implementação de certos efeitos.                              |
+| Math       | Biblioteca designada ao uso de funções e constantes matemáticas aplicadas a certas dinâmicas do jogo. Seu uso otimizou significativamente a implementação de certos efeitos. |
 |------------|------------------------------------------------------------------------------------|
-| Random     | Analogamente a Math, foi crucial para certos trechos do código,                    |
-|            | especialmente na atribuição randômica de coletáveis. Biblioteca padrão de Python.  |
+| Random     | Analogamente a Math, foi crucial para certos trechos do código, especialmente na atribuição randômica de coletáveis. Biblioteca padrão de Python. |
 |------------|------------------------------------------------------------------------------------|
-| Os         | Módulo útil ao carregamento de arquivos por seu caminho.                           |
-|            | Biblioteca padrão de Python.                                                       |
+| Os         | Módulo útil ao carregamento de arquivos por seu caminho. Biblioteca padrão de Python. |
 |------------|------------------------------------------------------------------------------------|
-| Sys        | Utilizada na interação com o sistema operacional para o encerramento do programa.  |
-|            | Biblioteca padrão de Python.                                                       |
+| Sys        | Utilizada na interação com o sistema operacional para o encerramento do programa. Biblioteca padrão de Python. |
 |------------|------------------------------------------------------------------------------------|
-| Github     | Plataforma basilar para a estruturação do projeto de forma coesa e colaborativa.   |
-|            | Viabilizou o trabalho em equipe, o gerenciamento de tarefas e a hospedagem         |
-|            | do código e dos arquivos utilizados.                                               |        
+| Github     | Plataforma basilar para a estruturação do projeto de forma coesa e colaborativa. Viabilizou o trabalho em equipe, o gerenciamento de tarefas e a hospedagem do código e dos arquivos utilizados. |        
 
 ## Desafios e lições aprendidas
 # Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
