@@ -114,7 +114,7 @@ Adaptaram-se, assim, as ideias originais para que resultassem em um projeto fact
 mas ainda instigante e conectado com os interesses e a criatividade do grupo.
 
 ### Quais as lições aprendidas durante o projeto?
-Para além das lições relativas à programação, o projeto foi enriquecedor no aprendizado do trabalho em grupo: a divisão de tarefas, a comunicação entre a equipe,
+Para além das lições relativas a programação, o projeto foi enriquecedor no aprendizado do trabalho em grupo: a divisão de tarefas, a comunicação entre a equipe,
 o compromisso com as metas estabelecidas e o entendimento de que colaborar requer, sobretudo, disciplina, parcimônia e compreensão para que se alcance o resultado almejado.
 
 ## Conceitos da disciplina aplicados
