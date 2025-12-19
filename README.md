@@ -22,10 +22,10 @@ Os três tipos de coletáveis têm os seguintes efeitos:
 **· Rosa:** Somar pontos ao relatório final do jogo.
 
 ## Participantes do projeto
-· Beatriz de Araújo Ciríaco do Rêgo Barros <bacrb>
-· Gabriela Tavares Benevides <gtb>\
-· Marcela Parahym Xavier Lins <mpxl>\
-· Sofia Avallone Sakovitz <sas3>
+· Beatriz de Araújo Ciríaco do Rêgo Barros (bacrb)\
+· Gabriela Tavares Benevides (gtb)\
+· Marcela Parahym Xavier Lins (mpxl)\
+· Sofia Avallone Sakovitz (sas)>
 
 ## Organização e desenvolvimento do jogo
 A execução do projeto foi repartida entre o grupo tendo em vista não apenas sua eficiência, mas também as preferências de cada integrante e a colaboração mútua.
