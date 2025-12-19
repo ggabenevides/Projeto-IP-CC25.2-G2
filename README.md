@@ -9,14 +9,14 @@ Após anos afastada das passarelas, **Gisele Bündchen** tem uma nova missão �
 
 Mas há um detalhe: modelos invejosas realizaram um complô para sabotar o evento e dispersaram **cascas de banana** pelo caminho.
 
-Ajude Gisele a driblar os obstáculos escorregadios e os ***paparazzi***, que a ofuscam enlouquecidamente com seus *flashes*, enquanto tenta coletar as **rosas** lançadas na passarela.
+Ajude Gisele a driblar os obstáculos escorregadios e os ***paparazzi***, que a ofuscam enlouquecidamente com seus flashes, enquanto tenta coletar as **rosas** lançadas na passarela.
 
 ***Atenção:** basta uma única banana para abalar sua reputação e zerar as rosas coletadas.*
 
 Será que a musa consegue manter-se imune a quedas no *catwalk* e honrar o estrelato?
 
 ### Objetivo
-Conduzir Gisele pelo desfile, driblando as cascas de banana e os *flashes* dos *paparazzi*, para coletar o máximo de rosas possível antes do fim da passarela.
+Conduzir Gisele pelo desfile, driblando as cascas de banana e os flashes dos *paparazzi*, para coletar o máximo de rosas possível antes do fim da passarela.
 
 ### Mecânica e fases
 O jogo consiste em uma única fase, com **velocidade progressiva** a cada ciclo de 10 segundos: desfilar ao longo de 700 metros de passarela, esquivando-se das **cascas de banana** e das **câmeras**, e acumulando as **rosas** dispersas pelo percurso.
@@ -41,9 +41,10 @@ Foram realizadas reuniões presenciais e assíncronas para planejar o processo, 
 
 | Integrante(s)               | Tarefa                |
 ------------------------------|-----------------------|
-| Beatriz Araújo Ciríaco do Rêgo Barros | Arte e implementação das teals de:<br>· início;<br>· _game over_;<br>· vitória. |
-| Gabriela Tavares Benevides | Personagens, sons, cenários e coletáveis |
-| Marcela Parahym Xavier Lins, Sofia Avallone Sakovitz | Código principal |
+| Beatriz Araújo Ciríaco do Rêgo Barros | Arte e implementação das telas de:<br>· início;<br>· _game over_;<br>· vitória. |
+| Gabriela Tavares Benevides | Cenários e a implementação desses códigos;<br>*Sprites* (personagem principal e coletáveis);<br>Sons;<br>Organização do código (repositório + modularização). |
+| Marcela Parahym Xavier Lins | Desenvolvimento do código principal;<br>Refinamento de detalhes gráficos;<br>Relatório final (READ.me). |
+| Sofia Avallone Sakovitz | Desenvolvimento do código principal;<br>Slides da apresentação. |
 
 ## Arquitetura do projeto - CONCLUIR
 ````
@@ -51,9 +52,9 @@ PROJETO/
 |-- assets/                 # Recursos estáticos do projeto
 |   |-- cenario/            # Imagens usadas para o cenário
 |   |-- fonte/              # Fonte utilizada para os textos
-|   |-- sprites/            # Sprites utilizadas
-|   |   |-- coletaveis/     # Sprites: coletáveis
-|   |   |-- gisele/         # Sprites: personagem
+|   |-- sprites/            # _Sprites_ utilizadas
+|   |   |-- coletaveis/     # _Sprites_: coletáveis
+|   |   |-- gisele/         # _Sprites_: personagem
 |   |-- sons/               # Música e efeitos sonoros utilizados no jogo
 |   |-- telas de transição  # PNGs das telas inicial e final, além de seus botões
 |-- src/                    # Código fonte do projeto
