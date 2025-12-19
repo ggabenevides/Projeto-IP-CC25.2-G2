@@ -67,6 +67,9 @@ def main():
     gisele.player_y = 500 # ou a posição inicial dela
     gisele.player_x = 100
     gisele.esta_pulando = False
+    transicao_final = False
+    pygame.mixer.music.set_volume(0.30)
+    pygame.mixer.music.play(-1)
 
     # configurando cenário
     tela_inicial.rodar()
@@ -122,6 +125,10 @@ def main():
         # chamando as funções de gisele
         gisele.atualizar_fisica()
         gisele.atualizar_animacao(delta_time)
+        
+        # incrementando a distância percorrida
+        distancia_pixels += 7
+        distancia_metros = distancia_pixels // pixels_por_metro
 
         if not finalizando:
             for i in range(tiles):
@@ -129,7 +136,9 @@ def main():
             scroll -= (7 + vel_coletavel)
             if abs(scroll) > bg_width:
                 scroll = 0
-        else:
+        if meta_metros <= distancia_metros-50: # checando finalizando de novo 
+            finalizando = True
+        if finalizando:
             # estado de finalização: o cenário para de rodar em loop
             # e desenhamos a passarela de chegada deslizando uma única vez
             tela.blit(LINHA_CHEGADA, (0, 0))
@@ -138,13 +147,11 @@ def main():
 
             if gisele.player_x >= largura_tela:
                  run = False # fim do jogo / tela de vitória
+                 transicao_final = True
+
 
         if abs(scroll) > bg_width:
             scroll = 0
-
-        # incrementando a distância percorrida
-        distancia_pixels += 7
-        distancia_metros = distancia_pixels // pixels_por_metro
 
         # movimentação dos coletáveis
         if not finalizando:
@@ -243,6 +250,7 @@ def main():
             if not som_vitoria_played:
                 som_vitoria.play()
                 som_vitoria_played = True
+        if transicao_final:
             tela_final = TelaFinal(tela, contadores, distancia_metros, meta_metros)
             return tela_final.run()
 
