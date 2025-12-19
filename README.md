@@ -11,7 +11,7 @@ Mas há um detalhe: modelos invejosas realizaram um complô para sabotar o event
 
 Ajude Gisele a driblar os obstáculos escorregadios e os ***paparazzi***, que enlouquecidamente a ofuscam com seus *flashes*, enquanto tenta coletar as **rosas** lançadas na passarela.
 
-**Atenção:** basta uma única banana para abalar sua reputação e zerar as rosas coletadas.
+***Atenção:** basta uma única banana para abalar sua reputação e zerar as rosas coletadas.*
 
 Será que a musa consegue manter-se imune a quedas no *catwalk* e honrar o estrelato?
 
