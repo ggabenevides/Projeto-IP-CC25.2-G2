@@ -61,8 +61,8 @@ Errou-se em subestimar, a princípio, a dimensão das tarefas necessárias e a p
 O redirecionamento do projeto primário, auxiliado pelos *checkpoints*, mostrou-se uma necessidade, mas, ao fim, também um aprendizado.  
 
 ### Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
-O maior desafio foi, certamente, o gerenciar o tempo e conciliar demandas internas — que, muitas vezes, exigiam a aquisição de novas habilidades — e externas.
-Para isso, alinhar as expectativas inicias ao que era passível de execução no tempo e nas condições disponíveis foi fundamental.
+O maior desafio foi, certamente, gerenciar o tempo e conciliar demandas internas — as quais, muitas vezes, exigiam a aquisição de novas habilidades — e externas.
+Para isso, alinhar as expectativas iniciais ao que era passível de execução no tempo e nas condições disponíveis foi fundamental.
 Adaptaram-se, assim, as ideias originais para que resultassem em um projeto factível, focado em contemplar com sucesso os requisitos listados,
 mas ainda instigante e conectado com os interesses e a criatividade do grupo.
 
@@ -73,12 +73,12 @@ o compromisso com as metas estabelecidas e o entendimento de que colaborar reque
 ## Conceitos da disciplina aplicados
 
 ### Classes
-A classes deram forma ao código. Por elas, os elementos do código puder ser representados como objetos — a exemplo de `Base`,
+A classes deram forma ao código. Graças a elas, os elementos do jogo puderam ser representados como objetos — a exemplo de `Base`,
 classe-mãe para os coletáveis, que lhes atribuía os *sprites* e a formatação desejada.
 
 ### Funções
-As funções também foram de grande relevância no projeto: organizaram os blocos de ação relativos à mecânica de jogo de forma concisa e eficiente.
-`atualizar_fisica()`, `atualizar_animacao()` e `pular()`, por exemplo, modularizaram a classe da personagem.
+As funções também foram de grande relevância no projeto: organizaram os blocos de ação relativos à mecânica do jogo de forma concisa e eficiente.
+`atualizar_fisica()`, `atualizar_animacao()` e `pular()`, por exemplo, modularizaram a classe da personagem, `Gisele`.
 
 ### Laços de repetição
 Em `main`, foi o *loop* `while` que garantiu a execução contínua do jogo, com dados, coletáveis e cenários atualizados.
@@ -88,13 +88,13 @@ Já os *loops* `for` foram indispensáveis à dinâmica aplicada aos coletáveis
 Usaram-se dicionários, especialmente, na implementação dos `contadores` e dos atributos retornados por `gerar_coletavel()`.
 
 ### Condicionais
-Amplamente utilizadas no código, determinaram o encadeamento de eventos, as condições para execuçãod as classes, a movimentação de Gisele e o controle da aceleração e da saída do jogo.
+Amplamente utilizadas no código, determinaram o encadeamento de eventos, as condições para execução das classes, a movimentação de Gisele e o controle da aceleração e da saída do jogo.
 
 ### Listas
-O uso de listas, como `alturas_coletaveis`, embora moderado, auxiliou a definição de constantes de posicionamento dos coletáveis na tela.
+O uso de listas, como `alturas_coletaveis`, embora moderado, auxiliou a definição das constantes de posicionamento dos coletáveis na tela.
 
 ### Tuplas
-Tuplas foram primordiais para o estabelecimento de constantes para armazenar dados de posicionamento na tela e das cores utilizadas segundo padrão RGB.
+Tuplas foram primordiais para o estabelecimento das constantes para armazenar dados de posicionamento na tela e das cores utilizadas segundo o padrão RGB.
 
 ## Como jogar
 
