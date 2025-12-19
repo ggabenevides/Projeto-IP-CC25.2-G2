@@ -20,9 +20,16 @@ class TelaFinal:
         dir_cenario = os.path.join('assets', 'telas de transição')
         self.bg = pg.image.load(os.path.join(dir_cenario, nome_fundo)).convert()
         self.bg = pg.transform.smoothscale(self.bg, self.screen.get_size())
-        
-        self.img_botao = pg.image.load(os.path.join(dir_cenario, "botao_reiniciar.png")).convert_alpha()
-        
+                
+        w, h = self.screen.get_size()
+
+        self.rect_click_botao = pg.Rect(
+            int(w * 0.39),
+            int(h * 0.88),
+            int(w * 0.24),
+            int(h * 0.06)
+        )
+
         # Fontes .ttf
         caminho_fonte = os.path.join('assets', 'fonte', 'fonte.ttf')
         self.fonte_titulo = pg.font.Font(caminho_fonte, 26)
@@ -33,9 +40,6 @@ class TelaFinal:
         self.x_caixa = 275  
         self.y_caixa = 165
         self.largura_caixa = 450
-        self.rect_botao = self.img_botao.get_rect(
-            center=(self.screen.get_width() // 2, self.screen.get_height() * 0.9)
-        )
 
     def obter_frases(self):
         frases = []
@@ -96,19 +100,24 @@ class TelaFinal:
             y_atual = self.draw_texto_quebrado(frase, self.x_caixa + 35, y_atual, self.largura_caixa)
             y_atual += 12 
 
-        # Desenhar botão reiniciar
-        self.screen.blit(self.img_botao, self.rect_botao)
+        # teste (apagar)
+        pg.draw.rect(self.screen, (255, 0, 0), self.rect_click_botao, 2)
 
     def run(self):
         while True:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
-                    pg.quit()
-                    sys.exit()
+                    return False  # sair do jogo
 
                 if event.type == pg.KEYDOWN:
-                    if event.key in (pg.K_RETURN, pg.K_ESCAPE):
-                        return  # volta pra main
+                    if event.key == pg.K_RETURN:
+                        return True   # reiniciar
+                    if event.key == pg.K_ESCAPE:
+                        return False  # sair do jogo
+                        
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    if self.rect_click_botao.collidepoint(event.pos):
+                        return True   # reiniciar
 
             self.draw()
             pg.display.flip()
